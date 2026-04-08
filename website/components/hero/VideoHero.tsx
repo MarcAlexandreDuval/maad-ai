@@ -182,7 +182,10 @@ export function VideoHero() {
         >
           <div className="flex flex-col gap-8 max-w-5xl">
             <div className="relative">
-              <h1 className="text-display tagline relative">
+              <p
+                className="text-display tagline relative"
+                aria-label="Tu es trouvé. Tu es sélectionné. Tu es automatisé."
+              >
                 <Typewriter
                   active={contentVisible}
                   startDelay={1500}
@@ -206,7 +209,7 @@ export function VideoHero() {
                     },
                   ]}
                 />
-              </h1>
+              </p>
             </div>
 
             <p className="max-w-2xl text-lg text-muted min-h-[6.5rem]">
@@ -218,7 +221,7 @@ export function VideoHero() {
                 segments={[
                   {
                     text:
-                      "Agence d'intelligence artificielle au Québec. On bâtit des agents IA, des automatisations — on te positionne pour être choisi sur Google, ChatGPT et Perplexity.",
+                      "On bâtit des agents IA, des automatisations et des chatbots pour les PME du Québec — et on te positionne sur Google, ChatGPT et Perplexity.",
                   },
                 ]}
               />

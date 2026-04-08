@@ -78,17 +78,9 @@ export function Footer() {
 
         {/* Bottom row */}
         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-8 sm:gap-6 label-mono text-[0.62rem] md:text-[0.65rem]">
-          {/* Left stack: email + copyright */}
-          <div className="flex flex-col gap-2">
-            <a
-              href={`mailto:${SITE.email}`}
-              className="hover:text-emerald transition-colors whitespace-nowrap"
-            >
-              {SITE.email}
-            </a>
-            <div className="opacity-70">
-              © 2026 {SITE.name} — Tous droits réservés.
-            </div>
+          {/* Left stack: copyright */}
+          <div className="opacity-70">
+            © 2026 {SITE.name} — Tous droits réservés.
           </div>
 
           {/* Right stack: legal links — stacked on mobile, stacked on desktop too */}

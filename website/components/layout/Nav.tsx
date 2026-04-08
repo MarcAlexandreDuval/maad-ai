@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import { NAV, INDUSTRIES } from "@/lib/site";
-import { Logo } from "@/components/ui/Logo";
 
 type DropdownId = "services" | "industries" | null;
 
@@ -39,24 +38,13 @@ export function Nav() {
   return (
     <>
       <header className="fixed top-0 inset-x-0 z-50 pt-4 md:pt-5 pointer-events-none">
-        <div className="container-rail relative flex justify-center pointer-events-none">
-          {/* Pill (desktop) / plain bar (mobile) */}
+        <div className="container-rail relative flex justify-end lg:justify-center pointer-events-none">
+          {/* Pill (desktop) / compact wrapper (mobile) */}
           <div
-            className={`nav-pill pointer-events-auto flex items-center w-full lg:w-auto justify-between lg:justify-start gap-2 md:gap-3 transition-all duration-500 ${
+            className={`nav-pill pointer-events-auto flex items-center w-auto justify-start gap-2 md:gap-3 transition-all duration-500 ${
               scrolled ? "nav-pill--scrolled" : ""
             }`}
           >
-            {/* Mobile-only logo on the left */}
-            <Link
-              href="/"
-              className="lg:hidden flex items-center pl-1 group"
-              aria-label="MAAD-AI — accueil"
-            >
-              <span className="text-bone group-hover:text-emerald transition-colors duration-500">
-                <Logo size={52} />
-              </span>
-            </Link>
-
             {/* Desktop nav links — borderless, part of the outer pill only */}
             <nav className="hidden lg:flex items-center gap-0.5 px-1">
               <Link href="/" className="nav-link">
@@ -140,16 +128,6 @@ export function Nav() {
             </div>
           </div>
 
-          {/* Desktop-only floating logo — top left */}
-          <Link
-            href="/"
-            aria-label="MAAD-AI — accueil"
-            className="hidden lg:flex pointer-events-auto absolute left-0 top-1/2 -translate-y-1/2 items-center justify-center group"
-          >
-            <span className="nav-logo-badge text-bone group-hover:text-emerald transition-colors duration-500">
-              <Logo size={38} />
-            </span>
-          </Link>
         </div>
 
         {/* Desktop Services mega-dropdown */}
@@ -229,8 +207,8 @@ export function Nav() {
 
       {/* Mobile fullscreen menu */}
       {open && (
-        <div className="fixed inset-0 z-40 pt-28 pb-12 px-6 overflow-y-auto lg:hidden bg-ink/95 backdrop-blur-2xl">
-          <div className="max-w-xl mx-auto flex flex-col gap-10">
+        <div className="fixed inset-0 z-40 pt-28 pb-12 px-6 overflow-y-auto lg:hidden">
+          <div className="max-w-xl mx-auto flex flex-col gap-10 bg-ink/90 backdrop-blur-2xl rounded-3xl border border-white/10 px-6 py-8 shadow-2xl">
             <Link
               href="/"
               className="text-display text-3xl"

@@ -10,8 +10,12 @@ export function FAQAccordion({ items }: { items: Item[] }) {
     <div className="max-w-4xl">
       {items.map((it, i) => (
         <details key={i} className="faq-item">
-          <summary>{it.q}</summary>
-          <div>{it.a}</div>
+          <summary>
+            <h3 className="faq-question">{it.q}</h3>
+          </summary>
+          <div>
+            <p>{it.a}</p>
+          </div>
         </details>
       ))}
     </div>
