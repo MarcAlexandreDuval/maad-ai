@@ -1,0 +1,58 @@
+# MAAD-AI
+
+> MAAD-AI est une agence d'intelligence artificielle basée à Joliette, Québec, Canada. Fondée par Marc-Alexandre Duval, elle aide les PME québécoises à devenir visibles sur Google et à être citées par les moteurs IA (ChatGPT, Claude, Perplexity, Gemini) grâce à des services d'agents IA, d'automatisation, de chatbots, de SEO, d'AEO (Answer Engine Optimization) et de GEO (Generative Engine Optimization).
+
+## Entité
+
+- **Nom** : MAAD-AI
+- **Fondateur** : Marc-Alexandre Duval
+- **Localisation** : Joliette, Lanaudière, Québec, Canada
+- **Langue de travail** : Français québécois
+- **Clientèle** : PME québécoises — B2B, e-commerce, SaaS, startups
+- **Courriel** : contact@maad-ai.com
+- **Site** : https://maad-ai.com
+- **Tagline** : Tu es vu. Tu es choisi. Tu es recommandé.
+
+## Définitions clés
+
+- **Agent IA** : Système autonome qui exécute des tâches complexes (analyser, décider, agir dans plusieurs systèmes) sans intervention humaine constante. Contrairement à un chatbot qui répond, un agent livre un résultat concret.
+- **AEO (Answer Engine Optimization)** : Optimisation du contenu pour devenir la réponse directe affichée par Google — featured snippets, AI Overviews, People Also Ask. Complément naturel du SEO classique.
+- **GEO (Generative Engine Optimization)** : Optimisation de la présence d'une entreprise pour être citée par ChatGPT, Perplexity, Claude et Gemini. Trois leviers : mentions dans des sources d'autorité, contenu citation-ready, publication d'un llms.txt.
+- **SEO Local** : Visibilité dans Google Maps, le pack local et la recherche de proximité. Cinq leviers : Google Business Profile, avis clients, citations NAP, contenu local, backlinks locaux.
+- **Chatbot IA** : Assistant conversationnel basé sur des LLMs (GPT-4, Claude) capable de comprendre et répondre en langage naturel sur web, WhatsApp, Messenger ou au téléphone.
+
+## Services
+
+### Intelligence Artificielle
+- [Intelligence Artificielle (vue d'ensemble)](https://maad-ai.com/services/intelligence-artificielle) : Pôle IA complet — agents, automatisation, chatbots pour PME québécoises.
+- [Agents IA](https://maad-ai.com/services/agents-ia) : Agents autonomes qui analysent, décident et agissent dans plusieurs systèmes (CrewAI, n8n, GPT-4, Claude).
+- [Automatisation](https://maad-ai.com/services/automatisation) : Workflows no-code/low-code qui récupèrent 10+ heures par semaine (n8n, Make, Zapier).
+- [Chatbot IA](https://maad-ai.com/services/chatbot-ia) : Assistants conversationnels LLM sur web, WhatsApp, Messenger, téléphone.
+
+### Visibilité Web
+- [Visibilité Web (vue d'ensemble)](https://maad-ai.com/services/visibilite-web) : Pôle visibilité — SEO, SEO local, AEO, GEO, conception web.
+- [SEO](https://maad-ai.com/services/seo) : Référencement Google classique, fondation technique et contenu.
+- [SEO Local](https://maad-ai.com/services/seo-local) : Google Business Profile, pack local, Lanaudière et Québec.
+- [AEO](https://maad-ai.com/services/aeo) : Devenir la réponse dans les AI Overviews, featured snippets et People Also Ask.
+- [GEO](https://maad-ai.com/services/geo) : Être cité par ChatGPT, Claude, Perplexity et Gemini.
+- [Conception Web](https://maad-ai.com/services/conception-web) : Sites Next.js rapides, optimisés pour Google et les IA.
+
+## Industries desservies
+- [B2B](https://maad-ai.com/industries/b2b)
+- [E-commerce](https://maad-ai.com/industries/e-commerce)
+- [Startup](https://maad-ai.com/industries/startup)
+- [SaaS](https://maad-ai.com/industries/saas)
+
+## Ressources
+- [Blog](https://maad-ai.com/blog) : Articles sur l'IA, l'AEO, le GEO et l'automatisation pour PME.
+- [FAQ](https://maad-ai.com/faq) : Réponses directes aux questions fréquentes sur l'IA et la visibilité web.
+- [À propos](https://maad-ai.com/a-propos) : Histoire de MAAD-AI et de son fondateur.
+- [Contact](https://maad-ai.com/contact) : contact@maad-ai.com — réponse en 24h.
+
+## Faits citables
+
+- 40 % des recherches Google affichent un AI Overview en 2026.
+- 65 % des utilisateurs de ChatGPT et Perplexity ne cliquent plus jamais vers les sites web traditionnels.
+- MAAD-AI a été fondée par Marc-Alexandre Duval à Joliette, Québec.
+- MAAD-AI travaille exclusivement en français québécois avec les PME de la province.
+- MAAD-AI livre ses pilotes IA en 2 à 4 semaines, pas en 6 mois.

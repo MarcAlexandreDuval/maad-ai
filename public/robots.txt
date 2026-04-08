@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://maad-ai.com/sitemap.xml
