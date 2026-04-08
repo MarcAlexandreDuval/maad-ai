@@ -1,74 +1,91 @@
-"use client";
-import { motion } from "framer-motion";
-import Link from "next/link";
-import Image from "next/image";
-import React from "react";
+'use client'
 
-const navLinks = [
-  { label: "Services", href: "#services" },
-  { label: "Why Now",  href: "#why-now" },
-  { label: "FAQ",      href: "#faq" },
-];
+import { useState, useEffect } from 'react'
+import Link from 'next/link'
 
 export default function Navbar() {
+  const [open, setOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20)
+    window.addEventListener('scroll', onScroll)
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
   return (
-    <motion.header
-      initial={{ opacity: 0, y: -12 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="fixed top-0 left-0 right-0 z-50"
-    >
-      {/* Glass backing layer */}
-      <div
-        className="absolute inset-0 backdrop-blur-xl"
-        style={{
-          background: "rgba(8,10,12,0.72)",
-          borderBottom: "1px solid rgba(255,255,255,0.055)",
-        } as React.CSSProperties}
-      />
-
-      <div className="relative max-w-6xl mx-auto px-6 md:px-10 h-14 flex items-center justify-between">
-
+    <header className="fixed top-3 md:top-4 left-0 right-0 z-50 px-4 md:px-8">
+      <nav className="max-w-6xl mx-auto flex items-center justify-between gap-4">
         {/* Logo */}
-        <Link href="/" className="group flex items-center gap-2.5">
-          <Image
-            src="/logo-maad-ai.png"
-            alt="MAAD-AI"
-            width={28}
-            height={28}
-            className="opacity-90 group-hover:opacity-100 transition-opacity duration-200"
-            priority
-          />
-          <span
-            className="text-[13px] font-semibold text-white/80 group-hover:text-white transition-colors duration-200 hidden sm:block"
-            style={{ fontFamily: "var(--font-display)", letterSpacing: "-0.01em" } as React.CSSProperties}
-          >
-            MAAD-AI
+        <Link
+          href="/"
+          className={`liquid-glass rounded-full pl-2 pr-4 py-1.5 md:py-2 font-display text-base md:text-lg font-bold tracking-tight transition-all inline-flex items-center gap-2 ${
+            scrolled ? 'shadow-lg shadow-black/30' : ''
+          }`}
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/logo.svg" alt="MAAD-AI" width={32} height={32} className="w-8 h-8 md:w-9 md:h-9" />
+          <span>
+            <span className="text-white">MAAD</span>
+            <span className="text-[#00c896]">-AI</span>
           </span>
         </Link>
 
-        {/* Nav links */}
-        <nav className="hidden md:flex items-center gap-6">
-          {navLinks.map((link) => (
-            <Link
-              key={link.label}
-              href={link.href}
-              className="text-[13px] font-medium text-[#6B7A8D] hover:text-white transition-colors duration-150"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
+        {/* Desktop Nav (centered pill) */}
+        <div className="hidden md:flex liquid-glass rounded-full px-1.5 py-1 items-center">
+          <Link href="/services/" className="px-4 py-2 text-sm font-medium text-white/80 hover:text-white transition-colors">Services</Link>
+          <Link href="/industries/" className="px-4 py-2 text-sm font-medium text-white/80 hover:text-white transition-colors">Industries</Link>
+          <Link href="/blog/" className="px-4 py-2 text-sm font-medium text-white/80 hover:text-white transition-colors">Blog</Link>
+          <Link href="/a-propos/" className="px-4 py-2 text-sm font-medium text-white/80 hover:text-white transition-colors">&Agrave; propos</Link>
+        </div>
 
-        {/* CTA button */}
-        <Link
-          href="#contact"
-          className="inline-flex items-center bg-[#34D399] text-[#080A0C] px-5 py-2 rounded-lg text-[13px] font-semibold tracking-[-0.01em] transition-all duration-200 hover:bg-[#6EE7B7] hover:shadow-glow-sm hover:-translate-y-px"
+        {/* CTA */}
+        <div className="hidden md:block">
+          <Link
+            href="https://calendly.com/marc-alexandre-duval-maad-ai/free-audit"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 bg-[#00c896] hover:bg-[#00dea6] text-black rounded-full px-4 py-2.5 text-sm font-semibold transition-all hover:shadow-[0_0_30px_rgba(0,200,150,0.35)]"
+          >
+            Audit gratuit
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="7" y1="17" x2="17" y2="7"/>
+              <polyline points="7 7 17 7 17 17"/>
+            </svg>
+          </Link>
+        </div>
+
+        {/* Mobile toggle */}
+        <button
+          onClick={() => setOpen(!open)}
+          className="md:hidden liquid-glass rounded-full w-11 h-11 flex flex-col items-center justify-center gap-1"
+          aria-label="Menu"
+          aria-expanded={open}
         >
-          Book a Call
-        </Link>
+          <span className={`block w-4 h-0.5 bg-white transition-all duration-300 ${open ? 'rotate-45 translate-y-1.5' : ''}`} />
+          <span className={`block w-4 h-0.5 bg-white transition-all duration-300 ${open ? 'opacity-0' : ''}`} />
+          <span className={`block w-4 h-0.5 bg-white transition-all duration-300 ${open ? '-rotate-45 -translate-y-1.5' : ''}`} />
+        </button>
+      </nav>
 
+      {/* Mobile Menu */}
+      <div className={`md:hidden mt-3 transition-all duration-300 ${open ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'}`}>
+        <div className="liquid-glass rounded-3xl p-6 flex flex-col gap-1 max-w-6xl mx-auto">
+          <Link href="/services/" onClick={() => setOpen(false)} className="px-4 py-3 text-base font-medium text-white/80 hover:text-white transition-colors">Services</Link>
+          <Link href="/industries/" onClick={() => setOpen(false)} className="px-4 py-3 text-base font-medium text-white/80 hover:text-white transition-colors">Industries</Link>
+          <Link href="/blog/" onClick={() => setOpen(false)} className="px-4 py-3 text-base font-medium text-white/80 hover:text-white transition-colors">Blog</Link>
+          <Link href="/a-propos/" onClick={() => setOpen(false)} className="px-4 py-3 text-base font-medium text-white/80 hover:text-white transition-colors">&Agrave; propos</Link>
+          <Link
+            href="https://calendly.com/marc-alexandre-duval-maad-ai/free-audit"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setOpen(false)}
+            className="mt-2 bg-[#00c896] text-black rounded-full px-5 py-3 text-sm font-semibold text-center"
+          >
+            Audit gratuit
+          </Link>
+        </div>
       </div>
-    </motion.header>
-  );
+    </header>
+  )
 }

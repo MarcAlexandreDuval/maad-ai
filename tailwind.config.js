@@ -1,57 +1,73 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
       colors: {
-        bg: "#080A0C",
-        surface: "#0D1117",
-        "surface-2": "#0F131A",
-        muted: "#6B7A8D",
-        soft: "#9AAABB",
         emerald: {
-          DEFAULT: "#34D399",
-          light: "#6EE7B7",
+          DEFAULT: '#00c896',
+          50: '#e6faf4',
+          100: '#b3f0de',
+          200: '#80e6c8',
+          300: '#4ddcb2',
+          400: '#1ad29c',
+          500: '#00c896',
+          600: '#00a078',
+          700: '#00785a',
+          800: '#00503c',
+          900: '#00281e',
+        },
+        dark: {
+          DEFAULT: '#050508',
+          50: '#0a0a10',
+          100: '#0f0f18',
+          200: '#141420',
+          300: '#1a1a28',
+          400: '#222232',
+          500: '#2a2a3c',
         },
       },
       fontFamily: {
-        display: ["var(--font-display)", "sans-serif"],
-        body:    ["var(--font-body)", "sans-serif"],
+        display: ['Clash Display', 'system-ui', 'sans-serif'],
+        mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+        body: ['Satoshi', 'system-ui', 'sans-serif'],
       },
-      boxShadow: {
-        "glow-sm":   "0 0 20px rgba(52,211,153,0.08)",
-        "glow":      "0 0 30px rgba(52,211,153,0.12)",
-        "glow-md":   "0 0 50px rgba(52,211,153,0.15)",
-        "glow-lg":   "0 0 80px rgba(52,211,153,0.18)",
-        "btn":       "0 8px 30px rgba(52,211,153,0.38), 0 0 0 1px rgba(52,211,153,0.2)",
-        "card":      "0 4px 24px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.04)",
-        "hero-card": "0 0 60px rgba(52,211,153,0.1), 0 24px 64px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.05)",
-      },
-      keyframes: {
-        float: {
-          "0%, 100%": { transform: "translateY(0px)" },
-          "50%":       { transform: "translateY(-10px)" },
-        },
-        shimmer: {
-          "0%":   { transform: "translateX(-100%)" },
-          "100%": { transform: "translateX(200%)" },
-        },
-        "gradient-shift": {
-          "0%, 100%": { "background-position": "0% 0%" },
-          "50%":       { "background-position": "0% 100%" },
-        },
+      backdropBlur: {
+        xs: '2px',
       },
       animation: {
-        float:            "float 6s ease-in-out infinite",
-        shimmer:          "shimmer 3s infinite",
-        "gradient-shift": "gradient-shift 4s ease-in-out infinite",
-        "pulse-slow":     "pulse 3s ease-in-out infinite",
+        'fade-up': 'fadeUp 0.6s ease-out forwards',
+        'fade-in': 'fadeIn 0.5s ease-out forwards',
+        'pulse-glow': 'pulseGlow 2s ease-in-out infinite',
+        'slide-in': 'slideIn 0.4s ease-out forwards',
+        'float': 'float 6s ease-in-out infinite',
+      },
+      keyframes: {
+        fadeUp: {
+          '0%': { opacity: '0', transform: 'translateY(24px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        pulseGlow: {
+          '0%, 100%': { boxShadow: '0 0 20px rgba(0, 200, 150, 0.15)' },
+          '50%': { boxShadow: '0 0 40px rgba(0, 200, 150, 0.3)' },
+        },
+        slideIn: {
+          '0%': { opacity: '0', transform: 'translateX(-16px)' },
+          '100%': { opacity: '1', transform: 'translateX(0)' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-10px)' },
+        },
       },
     },
   },
   plugins: [],
-};
+}
