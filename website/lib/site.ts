@@ -38,6 +38,15 @@ export const NAV = {
   },
 };
 
+export const SOCIALS = [
+  { name: "X", href: "#", label: "Suivre sur X (Twitter)" },
+  { name: "Instagram", href: "#", label: "Suivre sur Instagram" },
+  { name: "TikTok", href: "#", label: "Suivre sur TikTok" },
+  { name: "YouTube", href: "#", label: "S'abonner sur YouTube" },
+  { name: "Facebook", href: "#", label: "Suivre sur Facebook" },
+  { name: "LinkedIn", href: "#", label: "Suivre sur LinkedIn" },
+] as const;
+
 export const INDUSTRIES = [
   { href: "/industries/b2b", label: "B2B", desc: "Pipelines prévisibles, prospection augmentée." },
   { href: "/industries/e-commerce", label: "E-commerce", desc: "Trafic qualifié, conversion sans friction." },

@@ -1,16 +1,20 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useEffect } from "react";
-import { NAV } from "@/lib/site";
+import { useState, useEffect, useRef } from "react";
+import { NAV, INDUSTRIES } from "@/lib/site";
+import { Logo } from "@/components/ui/Logo";
+
+type DropdownId = "services" | "industries" | null;
 
 export function Nav() {
   const [open, setOpen] = useState(false);
+  const [dropdown, setDropdown] = useState<DropdownId>(null);
   const [scrolled, setScrolled] = useState(false);
-  const [hovered, setHovered] = useState<"ia" | "viz" | null>(null);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => setScrolled(window.scrollY > 10);
     onScroll();
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
@@ -23,99 +27,277 @@ export function Nav() {
     };
   }, [open]);
 
+  function openDropdown(id: Exclude<DropdownId, null>) {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setDropdown(id);
+  }
+  function closeDropdownDelayed() {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    closeTimer.current = setTimeout(() => setDropdown(null), 140);
+  }
+
   return (
     <>
-      <header
-        className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
-          scrolled ? "backdrop-blur-xl bg-ink/70 border-b border-white/5" : ""
-        }`}
-      >
-        <div className="container-rail flex items-center justify-between py-5">
-          <Link href="/" className="flex items-center gap-2 group" aria-label="MAAD-AI">
-            <div className="relative w-8 h-8">
-              <div className="absolute inset-0 border border-emerald rounded-sm rotate-45 group-hover:rotate-[60deg] transition-transform duration-700" />
-              <div className="absolute inset-1 bg-emerald/30 rounded-sm rotate-45 group-hover:scale-90 transition-transform duration-700" />
-              <div className="absolute inset-2.5 bg-emerald rounded-[2px] rotate-45" />
-            </div>
-            <span className="text-display text-xl tracking-tight">
-              MAAD<span className="text-emerald">-AI</span>
-            </span>
-          </Link>
-
-          {/* Desktop */}
-          <nav className="hidden lg:flex items-center gap-1 relative">
-            <DesktopDropdown
-              id="ia"
-              label="Intelligence"
-              data={NAV.ia}
-              activeId={hovered}
-              setActiveId={setHovered}
-            />
-            <DesktopDropdown
-              id="viz"
-              label="Visibilité"
-              data={NAV.visibility}
-              activeId={hovered}
-              setActiveId={setHovered}
-            />
-            <Link href="/industries" className="nav-link">
-              Industries
-            </Link>
-            <Link href="/blog" className="nav-link">
-              Blog
-            </Link>
-            <Link href="/a-propos" className="nav-link">
-              À propos
-            </Link>
-          </nav>
-
-          <div className="flex items-center gap-3">
+      <header className="fixed top-0 inset-x-0 z-50 pt-4 md:pt-5 pointer-events-none">
+        <div className="container-rail relative flex justify-center pointer-events-none">
+          {/* Pill (desktop) / plain bar (mobile) */}
+          <div
+            className={`nav-pill pointer-events-auto flex items-center w-full lg:w-auto justify-between lg:justify-start gap-2 md:gap-3 transition-all duration-500 ${
+              scrolled ? "nav-pill--scrolled" : ""
+            }`}
+          >
+            {/* Mobile-only logo on the left */}
             <Link
-              href="/contact"
-              className="hidden lg:inline-flex btn btn-primary !py-2.5 !px-5 !text-sm"
+              href="/"
+              className="lg:hidden flex items-center pl-1 group"
+              aria-label="MAAD-AI — accueil"
             >
-              Contacte-nous
+              <span className="text-bone group-hover:text-emerald transition-colors duration-500">
+                <Logo size={52} />
+              </span>
             </Link>
-            <button
-              onClick={() => setOpen(!open)}
-              className="lg:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 border border-white/10 rounded-full"
-              aria-label="Menu"
-            >
-              <span
-                className={`block w-4 h-px bg-bone transition-transform ${
-                  open ? "translate-y-[3px] rotate-45" : ""
-                }`}
-              />
-              <span
-                className={`block w-4 h-px bg-bone transition-transform ${
-                  open ? "-translate-y-[3px] -rotate-45" : ""
-                }`}
-              />
-            </button>
-          </div>
-        </div>
-      </header>
 
-      {/* Mobile menu */}
-      {open && (
-        <div className="fixed inset-0 z-40 pt-24 pb-12 px-6 overflow-y-auto lg:hidden bg-ink/95 backdrop-blur-2xl">
-          <div className="max-w-xl mx-auto flex flex-col gap-10">
-            <MobileSection title="Intelligence Artificielle" data={NAV.ia} onNavigate={() => setOpen(false)} />
-            <MobileSection title="Visibilité Web" data={NAV.visibility} onNavigate={() => setOpen(false)} />
-            <div className="flex flex-col gap-4 pt-6 border-t border-white/10">
-              <Link href="/industries" className="text-display text-2xl" onClick={() => setOpen(false)}>
-                Industries
+            {/* Desktop nav links — borderless, part of the outer pill only */}
+            <nav className="hidden lg:flex items-center gap-0.5 px-1">
+              <Link href="/" className="nav-link">
+                Accueil
               </Link>
-              <Link href="/blog" className="text-display text-2xl" onClick={() => setOpen(false)}>
+
+              {/* Services dropdown */}
+              <div
+                className="relative"
+                onMouseEnter={() => openDropdown("services")}
+                onMouseLeave={closeDropdownDelayed}
+              >
+                <button
+                  className={`nav-link flex items-center gap-1.5 ${
+                    dropdown === "services" ? "nav-link--active" : ""
+                  }`}
+                  aria-haspopup="true"
+                  aria-expanded={dropdown === "services"}
+                >
+                  Services
+                  <Chevron open={dropdown === "services"} />
+                </button>
+              </div>
+
+              {/* Industries dropdown */}
+              <div
+                className="relative"
+                onMouseEnter={() => openDropdown("industries")}
+                onMouseLeave={closeDropdownDelayed}
+              >
+                <button
+                  className={`nav-link flex items-center gap-1.5 ${
+                    dropdown === "industries" ? "nav-link--active" : ""
+                  }`}
+                  aria-haspopup="true"
+                  aria-expanded={dropdown === "industries"}
+                >
+                  Industries
+                  <Chevron open={dropdown === "industries"} />
+                </button>
+              </div>
+
+              <Link href="/blog" className="nav-link">
                 Blog
               </Link>
-              <Link href="/a-propos" className="text-display text-2xl" onClick={() => setOpen(false)}>
+              <Link href="/a-propos" className="nav-link">
                 À propos
               </Link>
-              <Link href="/faq" className="text-display text-2xl" onClick={() => setOpen(false)}>
+            </nav>
+
+            {/* CTA + hamburger */}
+            <div className="flex items-center gap-2 pl-1 md:pl-2">
+              <Link href="/contact" className="hidden lg:inline-flex nav-cta group">
+                Contacte-nous
+                <ArrowUpRight />
+              </Link>
+
+              {/* Mobile hamburger */}
+              <button
+                onClick={() => setOpen(!open)}
+                className="lg:hidden w-14 h-14 mr-1 flex flex-col items-center justify-center gap-[7px] rounded-full hover:bg-white/5 transition-colors"
+                aria-label="Menu"
+                aria-expanded={open}
+              >
+                <span
+                  className={`block w-7 h-[2px] bg-emerald rounded-full transition-transform duration-300 ${
+                    open ? "translate-y-[9px] rotate-45" : ""
+                  }`}
+                />
+                <span
+                  className={`block w-7 h-[2px] bg-emerald rounded-full transition-opacity duration-300 ${
+                    open ? "opacity-0" : ""
+                  }`}
+                />
+                <span
+                  className={`block w-7 h-[2px] bg-emerald rounded-full transition-transform duration-300 ${
+                    open ? "-translate-y-[9px] -rotate-45" : ""
+                  }`}
+                />
+              </button>
+            </div>
+          </div>
+
+          {/* Desktop-only floating logo — top left */}
+          <Link
+            href="/"
+            aria-label="MAAD-AI — accueil"
+            className="hidden lg:flex pointer-events-auto absolute left-0 top-1/2 -translate-y-1/2 items-center justify-center group"
+          >
+            <span className="nav-logo-badge text-bone group-hover:text-emerald transition-colors duration-500">
+              <Logo size={38} />
+            </span>
+          </Link>
+        </div>
+
+        {/* Desktop Services mega-dropdown */}
+        {dropdown === "services" && (
+          <div
+            className="hidden lg:block container-rail pointer-events-none"
+            onMouseEnter={() => openDropdown("services")}
+            onMouseLeave={closeDropdownDelayed}
+          >
+            <div className="flex justify-center mt-3">
+              <div className="mega pointer-events-auto animate-fade-down w-[min(760px,calc(100vw-3rem))]">
+                <div className="grid grid-cols-2 gap-0 divide-x divide-white/5">
+                  <MegaColumn
+                    eyebrow="Intelligence Artificielle"
+                    pillar={NAV.ia.pillar}
+                    items={NAV.ia.items}
+                    onNavigate={() => setDropdown(null)}
+                  />
+                  <MegaColumn
+                    eyebrow="Visibilité Web"
+                    pillar={NAV.visibility.pillar}
+                    items={NAV.visibility.items}
+                    onNavigate={() => setDropdown(null)}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Desktop Industries dropdown */}
+        {dropdown === "industries" && (
+          <div
+            className="hidden lg:block container-rail pointer-events-none"
+            onMouseEnter={() => openDropdown("industries")}
+            onMouseLeave={closeDropdownDelayed}
+          >
+            <div className="flex justify-center mt-3">
+              <div className="mega pointer-events-auto animate-fade-down w-[min(440px,calc(100vw-3rem))]">
+                <div className="p-6">
+                  <div className="label-mono text-emerald mb-4 text-[0.62rem]">
+                    Industries desservies
+                  </div>
+                  <Link
+                    href="/industries"
+                    onClick={() => setDropdown(null)}
+                    className="group flex items-center justify-between pb-3 mb-3 border-b border-white/5 hover:text-emerald transition-colors"
+                  >
+                    <span className="text-display text-base">Vue d&apos;ensemble</span>
+                    <span className="text-emerald opacity-0 group-hover:opacity-100 transition-opacity">
+                      →
+                    </span>
+                  </Link>
+                  <div className="flex flex-col">
+                    {INDUSTRIES.map((it) => (
+                      <Link
+                        key={it.href}
+                        href={it.href}
+                        onClick={() => setDropdown(null)}
+                        className="group flex flex-col gap-0.5 py-2.5 px-3 -mx-3 rounded-lg hover:bg-white/[0.03] transition-colors"
+                      >
+                        <span className="text-display text-base text-bone group-hover:text-emerald transition-colors">
+                          {it.label}
+                        </span>
+                        <span className="label-mono text-[0.6rem] opacity-55">
+                          {it.desc}
+                        </span>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </header>
+
+      {/* Mobile fullscreen menu */}
+      {open && (
+        <div className="fixed inset-0 z-40 pt-28 pb-12 px-6 overflow-y-auto lg:hidden bg-ink/95 backdrop-blur-2xl">
+          <div className="max-w-xl mx-auto flex flex-col gap-10">
+            <Link
+              href="/"
+              className="text-display text-3xl"
+              onClick={() => setOpen(false)}
+            >
+              Accueil
+            </Link>
+
+            <MobileSection
+              title="Intelligence Artificielle"
+              pillar={NAV.ia.pillar}
+              items={NAV.ia.items}
+              onNavigate={() => setOpen(false)}
+            />
+            <MobileSection
+              title="Visibilité Web"
+              pillar={NAV.visibility.pillar}
+              items={NAV.visibility.items}
+              onNavigate={() => setOpen(false)}
+            />
+
+            <div className="flex flex-col gap-3 pt-6 border-t border-white/10">
+              <div className="label-mono text-emerald">Industries</div>
+              <Link
+                href="/industries"
+                className="text-display text-2xl text-emerald"
+                onClick={() => setOpen(false)}
+              >
+                → Vue d&apos;ensemble
+              </Link>
+              {INDUSTRIES.map((it) => (
+                <Link
+                  key={it.href}
+                  href={it.href}
+                  className="flex flex-col gap-0.5"
+                  onClick={() => setOpen(false)}
+                >
+                  <span className="text-display text-xl">{it.label}</span>
+                  <span className="label-mono text-[0.62rem] opacity-60">{it.desc}</span>
+                </Link>
+              ))}
+            </div>
+
+            <div className="flex flex-col gap-5 pt-6 border-t border-white/10">
+              <Link
+                href="/a-propos"
+                className="text-display text-2xl"
+                onClick={() => setOpen(false)}
+              >
+                À propos
+              </Link>
+              <Link
+                href="/blog"
+                className="text-display text-2xl"
+                onClick={() => setOpen(false)}
+              >
+                Blog
+              </Link>
+              <Link
+                href="/faq"
+                className="text-display text-2xl"
+                onClick={() => setOpen(false)}
+              >
                 FAQ
               </Link>
             </div>
+
             <Link
               href="/contact"
               className="btn btn-primary justify-center w-full"
@@ -126,125 +308,119 @@ export function Nav() {
           </div>
         </div>
       )}
-
-      <style jsx>{`
-        .nav-link {
-          padding: 0.6rem 1rem;
-          font-size: 0.9rem;
-          color: var(--bone-muted);
-          transition: color 0.3s ease;
-          position: relative;
-        }
-        .nav-link:hover {
-          color: var(--bone);
-        }
-      `}</style>
     </>
   );
 }
 
-type DropdownData = {
-  label: string;
-  pillar: { href: string; label: string };
-  items: { href: string; label: string; tagline: string }[];
-};
+type PillarItem = { href: string; label: string };
+type ServiceItem = { href: string; label: string; tagline: string };
 
-function DesktopDropdown({
-  id,
-  label,
-  data,
-  activeId,
-  setActiveId,
-}: {
-  id: "ia" | "viz";
-  label: string;
-  data: DropdownData;
-  activeId: "ia" | "viz" | null;
-  setActiveId: (v: "ia" | "viz" | null) => void;
-}) {
-  const isActive = activeId === id;
+function Chevron({ open }: { open: boolean }) {
   return (
-    <div
-      className="relative"
-      onMouseEnter={() => setActiveId(id)}
-      onMouseLeave={() => setActiveId(null)}
+    <svg
+      width="10"
+      height="10"
+      viewBox="0 0 10 10"
+      fill="none"
+      className={`transition-transform duration-300 ${open ? "rotate-180" : ""}`}
     >
-      <button
-        className={`nav-link flex items-center gap-1.5 ${isActive ? "text-bone" : ""}`}
+      <path
+        d="M2 4 L5 7 L8 4"
+        stroke="currentColor"
+        strokeWidth="1.3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function ArrowUpRight() {
+  return (
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 14 14"
+      fill="none"
+      className="transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+      aria-hidden
+    >
+      <path
+        d="M4 10 L10 4 M10 4 H5 M10 4 V9"
+        stroke="currentColor"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function MegaColumn({
+  eyebrow,
+  pillar,
+  items,
+  onNavigate,
+}: {
+  eyebrow: string;
+  pillar: PillarItem;
+  items: ServiceItem[];
+  onNavigate: () => void;
+}) {
+  return (
+    <div className="p-6">
+      <div className="label-mono text-emerald mb-4 text-[0.62rem]">{eyebrow}</div>
+      <Link
+        href={pillar.href}
+        onClick={onNavigate}
+        className="group flex items-center justify-between pb-3 mb-3 border-b border-white/5 hover:text-emerald transition-colors"
       >
-        {label}
-        <svg
-          width="10"
-          height="10"
-          viewBox="0 0 10 10"
-          fill="none"
-          className={`transition-transform duration-300 ${isActive ? "rotate-180" : ""}`}
-        >
-          <path d="M2 4 L5 7 L8 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
-        </svg>
-      </button>
-      {isActive && (
-        <div className="absolute top-full left-0 pt-4 min-w-[380px]">
-          <div className="glass p-6 animate-fade-in">
-            <Link
-              href={data.pillar.href}
-              className="block pb-3 mb-3 border-b border-white/5 label-mono hover:text-emerald transition-colors"
-            >
-              → {data.pillar.label}
-            </Link>
-            <div className="flex flex-col gap-1">
-              {data.items.map((it) => (
-                <Link
-                  key={it.href}
-                  href={it.href}
-                  className="group flex flex-col gap-0.5 p-3 -mx-3 rounded-lg hover:bg-white/3 transition-colors"
-                >
-                  <span className="text-display text-lg text-bone group-hover:text-emerald transition-colors">
-                    {it.label}
-                  </span>
-                  <span className="label-mono text-[0.65rem] opacity-60">{it.tagline}</span>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
-      <style jsx>{`
-        .nav-link {
-          padding: 0.6rem 1rem;
-          font-size: 0.9rem;
-          color: var(--bone-muted);
-          transition: color 0.3s ease;
-          background: transparent;
-          border: none;
-          cursor: pointer;
-          font-family: inherit;
-        }
-      `}</style>
+        <span className="text-display text-base">{pillar.label}</span>
+        <span className="text-emerald opacity-0 group-hover:opacity-100 transition-opacity">
+          →
+        </span>
+      </Link>
+      <div className="flex flex-col">
+        {items.map((it) => (
+          <Link
+            key={it.href}
+            href={it.href}
+            onClick={onNavigate}
+            className="group flex flex-col gap-0.5 py-2.5 px-3 -mx-3 rounded-lg hover:bg-white/[0.03] transition-colors"
+          >
+            <span className="text-display text-base text-bone group-hover:text-emerald transition-colors">
+              {it.label}
+            </span>
+            <span className="label-mono text-[0.6rem] opacity-55">{it.tagline}</span>
+          </Link>
+        ))}
+      </div>
     </div>
   );
 }
 
 function MobileSection({
   title,
-  data,
+  pillar,
+  items,
   onNavigate,
 }: {
   title: string;
-  data: DropdownData;
+  pillar: PillarItem;
+  items: ServiceItem[];
   onNavigate: () => void;
 }) {
   return (
     <div className="flex flex-col gap-3">
-      <div className="label-mono">{title}</div>
+      <div className="label-mono text-emerald">{title}</div>
       <Link
-        href={data.pillar.href}
+        href={pillar.href}
         className="text-display text-2xl text-emerald"
         onClick={onNavigate}
       >
-        → Vue d&apos;ensemble
+        → {pillar.label}
       </Link>
-      {data.items.map((it) => (
+      {items.map((it) => (
         <Link
           key={it.href}
           href={it.href}

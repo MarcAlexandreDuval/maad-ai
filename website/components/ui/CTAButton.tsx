@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 
 type Props = {
   href?: string;
-  variant?: "primary" | "ghost";
+  variant?: "primary" | "ghost" | "glass";
   children: ReactNode;
   className?: string;
 };
@@ -14,20 +14,26 @@ export function CTAButton({
   children,
   className = "",
 }: Props) {
-  const cls = `btn ${variant === "primary" ? "btn-primary" : "btn-ghost"} ${className}`;
+  const base =
+    variant === "glass"
+      ? "btn btn-glass"
+      : variant === "ghost"
+        ? "btn btn-ghost"
+        : "btn btn-primary";
   return (
-    <Link href={href} className={cls}>
+    <Link href={href} className={`${base} group ${className}`}>
       <span>{children}</span>
       <svg
-        width="16"
-        height="16"
-        viewBox="0 0 16 16"
+        width="15"
+        height="15"
+        viewBox="0 0 14 14"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        className="transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
         aria-hidden
       >
         <path
-          d="M3.5 8H12.5M12.5 8L8 3.5M12.5 8L8 12.5"
+          d="M4 10 L10 4 M10 4 H5 M10 4 V9"
           stroke="currentColor"
           strokeWidth="1.5"
           strokeLinecap="round"
