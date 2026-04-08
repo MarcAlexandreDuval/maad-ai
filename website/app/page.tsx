@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { CTAButton } from "@/components/ui/CTAButton";
+import { VideoHero } from "@/components/hero/VideoHero";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { FAQAccordion } from "@/components/ui/FAQAccordion";
@@ -46,65 +47,42 @@ export default function HomePage() {
     <>
       <JsonLd data={faqSchema(faqs)} />
 
-      {/* ============ HERO ============ */}
-      <section className="relative min-h-[92vh] flex items-center overflow-hidden pt-10">
-        <div className="bg-grid" />
-        <div className="bg-noise" />
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full bg-emerald/10 blur-[120px] pointer-events-none" />
-        <div className="container-rail relative z-10 py-20">
-          <div className="flex flex-col gap-8 max-w-5xl">
-            <div className="eyebrow animate-fade-in">
-              <span>Agence IA · SEO · AEO · GEO — Québec</span>
-            </div>
+      {/* ============ HERO (video intro + background) ============ */}
+      <VideoHero />
 
-            <h1 className="text-display">
-              <span className="block animate-fade-up">Tu es vu.</span>
-              <span className="block text-italic-serif text-emerald animate-fade-up delay-200">
-                Tu es choisi.
-              </span>
-              <span className="block animate-fade-up delay-400">Tu es recommandé.</span>
-            </h1>
-
-            <p className="max-w-xl text-lg text-muted animate-fade-up delay-500">
-              MAAD-AI est une agence d&apos;intelligence artificielle basée à Joliette.
-              On bâtit des agents IA, des automatisations et des chatbots, et on fait en
-              sorte que ton entreprise soit trouvée dans Google <em className="text-italic-serif not-italic">et</em>{" "}
-              recommandée par ChatGPT.
-            </p>
-
-            <div className="flex flex-wrap gap-3 animate-fade-up delay-600">
-              <CTAButton href="/contact" variant="primary">
-                Parle-nous de ton projet
-              </CTAButton>
-              <CTAButton href="#services" variant="ghost">
-                Voir nos services
-              </CTAButton>
-            </div>
-
-            {/* Marquee of platforms */}
-            <div className="mt-12 pt-10 border-t border-white/5 animate-fade-in delay-700">
-              <div className="label-mono mb-5">Visible partout où on cherche</div>
-              <div className="marquee">
-                <div className="marquee-track">
-                  {["Google", "ChatGPT", "Perplexity", "Claude", "Gemini", "Google Maps", "AI Overviews"].concat([
-                    "Google",
-                    "ChatGPT",
-                    "Perplexity",
-                    "Claude",
-                    "Gemini",
-                    "Google Maps",
-                    "AI Overviews",
-                  ]).map((p, i) => (
-                    <span
-                      key={i}
-                      className="text-display text-italic-serif text-3xl md:text-4xl text-bone-muted whitespace-nowrap flex items-center gap-12"
-                    >
-                      {p}
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald inline-block" />
-                    </span>
-                  ))}
-                </div>
-              </div>
+      {/* ============ MARQUEE ============ */}
+      <section className="relative py-14 border-y border-white/5 overflow-hidden">
+        <div className="container-rail">
+          <div className="label-mono mb-5">Visible partout où on cherche</div>
+          <div className="marquee">
+            <div className="marquee-track">
+              {[
+                "Google",
+                "ChatGPT",
+                "Perplexity",
+                "Claude",
+                "Gemini",
+                "Google Maps",
+                "AI Overviews",
+              ]
+                .concat([
+                  "Google",
+                  "ChatGPT",
+                  "Perplexity",
+                  "Claude",
+                  "Gemini",
+                  "Google Maps",
+                  "AI Overviews",
+                ])
+                .map((p, i) => (
+                  <span
+                    key={i}
+                    className="text-display text-italic-serif text-3xl md:text-4xl text-bone-muted whitespace-nowrap flex items-center gap-12"
+                  >
+                    {p}
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald inline-block" />
+                  </span>
+                ))}
             </div>
           </div>
         </div>
