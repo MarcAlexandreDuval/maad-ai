@@ -97,8 +97,8 @@ const LOGOS: LogoEntry[] = [
  * Uses currentColor so callers control the tint via text color.
  */
 export function BrandLogos() {
-  // Duplicate for seamless marquee loop
-  const items = [...LOGOS, ...LOGOS];
+  // Quadruple for seamless marquee loop on wide viewports
+  const items = [...LOGOS, ...LOGOS, ...LOGOS, ...LOGOS];
   return (
     <div className="brand-logos">
       <div className="brand-logos__track">

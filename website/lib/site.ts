@@ -52,4 +52,6 @@ export const INDUSTRIES = [
   { href: "/industries/e-commerce", label: "E-commerce", desc: "Trafic qualifié, conversion sans friction." },
   { href: "/industries/startup", label: "Startup", desc: "Du MVP au momentum, en mois pas années." },
   { href: "/industries/saas", label: "SaaS", desc: "SEO de feature, activation par IA." },
+  { href: "/industries/personnalite-publique", label: "Personnalité publique", desc: "Image de marque, visibilité et automatisation pour créateurs." },
+  { href: "/industries/immobilier", label: "Immobilier", desc: "Leads qualifiés, visibilité locale et IA pour courtiers." },
 ];

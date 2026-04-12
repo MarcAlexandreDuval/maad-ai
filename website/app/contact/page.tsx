@@ -9,7 +9,7 @@ import { SITE } from "@/lib/site";
 export const metadata = buildMetadata({
   title: "Contact — Parlons de ton projet",
   description:
-    "Contacte MAAD-AI pour discuter de ton projet IA, SEO, AEO ou GEO. Basé à Joliette, Québec. Réponse en 24h.",
+    "Contacte MAAD-AI pour discuter de ton projet IA, SEO, AEO ou GEO. Agence québécoise. Réponse en 24h.",
   path: "/contact",
 });
 
@@ -42,7 +42,7 @@ export default function ContactPage() {
         title={
           <>
             On{" "}
-            <span className="text-italic-serif text-emerald">se parle</span> ?
+            <em className="text-italic-serif text-emerald">se parle</em> ?
           </>
         }
         lede={
@@ -69,15 +69,12 @@ export default function ContactPage() {
             </GlassCard>
 
             <GlassCard>
-              <div className="label-mono text-emerald mb-3">Basé à</div>
+              <div className="label-mono text-emerald mb-3">Basé au</div>
               <div className="text-display text-xl">
-                {SITE.city}
-                <br />
-                {SITE.region}, {SITE.province}
+                {SITE.province}, {SITE.country}
               </div>
               <p className="text-sm text-muted mt-3">
-                On travaille à distance avec toute la province. Et en personne si
-                t&apos;es dans Lanaudière.
+                On travaille avec des PME de partout au Québec — et au-delà.
               </p>
             </GlassCard>
 
@@ -95,7 +92,7 @@ export default function ContactPage() {
             <div className="label-mono text-emerald mb-3">Le formulaire</div>
             <h2 className="text-display mb-8">
               Parle-nous de{" "}
-              <span className="text-italic-serif text-emerald">ton projet</span>.
+              <em className="text-italic-serif text-emerald">ton projet</em>.
             </h2>
             <ContactForm />
           </GlassCard>

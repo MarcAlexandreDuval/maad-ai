@@ -90,11 +90,21 @@ export function VideoHero() {
     let hls2: { destroy: () => void } | null = null;
     let cancelled = false;
 
+    // Only Safari truly plays HLS natively. Chrome/Firefox/Edge report
+    // `canPlayType('application/vnd.apple.mpegurl')` as "maybe" but actually
+    // fail with MEDIA_ERR_SRC_NOT_SUPPORTED, so we force hls.js everywhere
+    // except on real Safari.
+    const ua = typeof navigator !== "undefined" ? navigator.userAgent : "";
+    const isSafari = /safari/i.test(ua) && !/chrome|crios|android/i.test(ua);
+
     async function setupHls(
       video: HTMLVideoElement | null,
     ): Promise<{ destroy: () => void } | null> {
       if (!video) return null;
-      if (video.canPlayType("application/vnd.apple.mpegurl")) {
+      if (
+        isSafari &&
+        video.canPlayType("application/vnd.apple.mpegurl")
+      ) {
         video.src = VIDEO_SRC;
         video.play().catch(() => {});
         return null;
@@ -212,7 +222,7 @@ export function VideoHero() {
               </p>
             </div>
 
-            <p className="max-w-2xl text-lg text-muted min-h-[6.5rem]">
+            <p className="hero-subtitle text-lg text-muted min-h-[6.5rem]">
               <Typewriter
                 active={titleDone}
                 startDelay={450}
@@ -221,7 +231,13 @@ export function VideoHero() {
                 segments={[
                   {
                     text:
-                      "On bâtit des agents IA, des automatisations et des chatbots pour les PME du Québec — et on te positionne sur Google, ChatGPT et Perplexity.",
+                      "On bâtit des agents IA, des automatisations et des chatbots pour les PME du Québec.",
+                    block: true,
+                  },
+                  {
+                    text:
+                      "Et on te positionne sur Google, ChatGPT et Perplexity.",
+                    block: true,
                   },
                 ]}
               />

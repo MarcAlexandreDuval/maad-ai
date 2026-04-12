@@ -10,7 +10,7 @@ import { breadcrumbSchema } from "@/lib/schema";
 export const metadata = buildMetadata({
   title: "Industries — Solutions IA par secteur",
   description:
-    "Solutions IA, SEO et visibilité web pour B2B, e-commerce, startups et SaaS au Québec. Cas d'usage adaptés à chaque industrie.",
+    "Solutions IA, SEO et visibilité web pour B2B, e-commerce, startups, SaaS, personnalités publiques et immobilier au Québec. Cas d'usage adaptés à chaque industrie.",
   path: "/industries",
 });
 
@@ -49,7 +49,7 @@ export default function IndustriesPage() {
           <>
             On adapte nos services à ton industrie : les priorités d&apos;un SaaS ne sont
             pas celles d&apos;un e-commerce, et un B2B n&apos;a pas les mêmes enjeux qu&apos;une
-            startup. Quatre terrains de jeu, quatre approches.
+            startup. Six terrains de jeu, six approches.
           </>
         }
       />

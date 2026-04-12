@@ -30,7 +30,7 @@ const faqs: { q: string; a: React.ReactNode; aText: string }[] = [
   {
     q: "C'est quoi une agence IA au Québec?",
     aText:
-      "Une agence IA aide les entreprises à intégrer l'intelligence artificielle dans leurs opérations — agents autonomes, automatisation de workflows, chatbots intelligents. MAAD-AI est basée à Joliette et se spécialise avec les PME du Québec.",
+      "Une agence IA aide les entreprises à intégrer l'intelligence artificielle dans leurs opérations — agents autonomes, automatisation de workflows, chatbots intelligents. MAAD-AI se spécialise avec les PME du Québec.",
     a: (
       <>
         Une agence IA aide les entreprises à intégrer l&apos;intelligence
@@ -39,7 +39,7 @@ const faqs: { q: string; a: React.ReactNode; aText: string }[] = [
         <Link href="/a-propos" className="faq-link">
           MAAD-AI
         </Link>{" "}
-        est basée à Joliette et se spécialise avec les PME du Québec.
+        se spécialise avec les PME du Québec.
       </>
     ),
   },
@@ -140,7 +140,7 @@ export default function HomePage() {
                   MAAD-AI
                 </span>
                 <h1 className="signature-line__h1">
-                  Agence d&apos;intelligence artificielle au Québec
+                  IA et visibilité web pour les PME du Québec
                 </h1>
               </div>
               <span className="signature-line__rule" aria-hidden />
@@ -387,7 +387,7 @@ export default function HomePage() {
                 anim: <SeoLocalMapAnim />,
                 number: "V.02",
                 title: "SEO Local",
-                desc: "Joliette, Repentigny, Terrebonne, tout Lanaudière. On te fait apparaître dans Google Maps et le pack local.",
+                desc: "Ton quartier, ta ville, ta région. On te fait apparaître dans Google Maps et le pack local — partout au Québec.",
                 cta: "Voir le SEO local",
                 large: false,
                 priority: false,
@@ -542,7 +542,7 @@ export default function HomePage() {
                   </p>
                 </div>
                 <div className="cta-final__action">
-                  <CTAButton href="/contact-research">
+                  <CTAButton href="/contact">
                     Parle-nous de ton projet
                   </CTAButton>
                   <span className="cta-final__hint label-mono">

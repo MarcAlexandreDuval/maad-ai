@@ -24,9 +24,9 @@ export function Footer() {
               </span>
             </Link>
             <p className="text-muted text-sm leading-relaxed mb-7">
-              Agence d&apos;intelligence artificielle.
+              Agence d&apos;intelligence artificielle et de visibilité web.
               <br />
-              {SITE.city}, {SITE.region}, {SITE.province}.
+              Québec, Canada.
             </p>
             <SocialIcons className="justify-center lg:justify-start" />
           </div>

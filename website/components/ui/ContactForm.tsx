@@ -84,15 +84,10 @@ export function ContactForm() {
             <option value="" disabled>
               Choisis un service
             </option>
-            <option value="agent-ia">Agent IA</option>
-            <option value="automatisation">Automatisation</option>
-            <option value="chatbot">Chatbot IA</option>
-            <option value="seo">SEO</option>
-            <option value="seo-local">SEO Local</option>
-            <option value="aeo">AEO</option>
-            <option value="geo">GEO</option>
-            <option value="conception-web">Conception Web</option>
-            <option value="autre">Autre</option>
+            <option value="intelligence-artificielle">Intelligence artificielle</option>
+            <option value="visibilite-web">Visibilité web</option>
+            <option value="pack-complet">Pack complet (IA + Visibilité)</option>
+            <option value="unknown">Je ne sais pas encore</option>
           </select>
         </div>
         <div className="field">
@@ -103,10 +98,11 @@ export function ContactForm() {
             <option value="" disabled>
               Choisis une tranche
             </option>
-            <option value="sub-2k">&lt; 2 000 $</option>
+            <option value="sub-2k">Moins de 2 000 $</option>
             <option value="2-5k">2 000 $ — 5 000 $</option>
             <option value="5-10k">5 000 $ — 10 000 $</option>
-            <option value="10k+">10 000 $ +</option>
+            <option value="10-25k">10 000 $ — 25 000 $</option>
+            <option value="25k+">25 000 $ +</option>
             <option value="unknown">Je ne sais pas encore</option>
           </select>
         </div>
