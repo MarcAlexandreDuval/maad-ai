@@ -1688,6 +1688,211 @@
   }
 
   /* ============================================================ */
+  /* BENTO GRID — asymmetric use cases layout                     */
+  /* ============================================================ */
+  .bento-grid {
+    display: grid;
+    gap: 1.25rem;
+  }
+  .bento-grid--4 {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  .bento-grid--3 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .bento-grid--6 {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  @media (max-width: 900px) {
+    .bento-grid--4,
+    .bento-grid--3,
+    .bento-grid--6 {
+      grid-template-columns: 1fr;
+    }
+  }
+  .bento-item {
+    position: relative;
+    min-height: 220px;
+    display: flex;
+  }
+  @media (min-width: 901px) {
+    .bento-grid--4 .bento-item--lg {
+      grid-column: span 4;
+    }
+    .bento-grid--4 .bento-item--sm {
+      grid-column: span 2;
+    }
+    /* Diagonal rhythm: swap on second row */
+    .bento-grid--4 .bento-item:nth-child(3) {
+      grid-column: span 2;
+    }
+    .bento-grid--4 .bento-item:nth-child(4) {
+      grid-column: span 4;
+    }
+    .bento-grid--3 .bento-item--tall {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+    .bento-grid--3 .bento-item--sm {
+      grid-column: span 2;
+    }
+    /* 6-item: diagonal rhythm [4/2][3/3][2/4] */
+    .bento-grid--6 .bento-item:nth-child(1) {
+      grid-column: span 4;
+    }
+    .bento-grid--6 .bento-item:nth-child(2) {
+      grid-column: span 2;
+    }
+    .bento-grid--6 .bento-item:nth-child(3),
+    .bento-grid--6 .bento-item:nth-child(4) {
+      grid-column: span 3;
+    }
+    .bento-grid--6 .bento-item:nth-child(5) {
+      grid-column: span 2;
+    }
+    .bento-grid--6 .bento-item:nth-child(6) {
+      grid-column: span 4;
+    }
+  }
+
+  .bento-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    padding: 2rem 2rem 2.25rem;
+    border-radius: 18px;
+    background: linear-gradient(
+      155deg,
+      rgba(255, 255, 255, 0.035) 0%,
+      rgba(255, 255, 255, 0.015) 60%,
+      rgba(0, 200, 150, 0.025) 100%
+    );
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(22px) saturate(1.1);
+    -webkit-backdrop-filter: blur(22px) saturate(1.1);
+    overflow: hidden;
+    transition:
+      transform 0.5s cubic-bezier(0.22, 0.85, 0.25, 1),
+      border-color 0.5s ease,
+      background 0.5s ease;
+  }
+  .bento-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      135deg,
+      rgba(0, 200, 150, 0) 0%,
+      rgba(0, 200, 150, 0.35) 50%,
+      rgba(0, 200, 150, 0) 100%
+    );
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+  }
+  .bento-item:hover .bento-card {
+    transform: translateY(-4px);
+    border-color: rgba(0, 200, 150, 0.35);
+    background: linear-gradient(
+      155deg,
+      rgba(255, 255, 255, 0.05) 0%,
+      rgba(0, 200, 150, 0.04) 50%,
+      rgba(0, 200, 150, 0.08) 100%
+    );
+  }
+  .bento-item:hover .bento-card::before {
+    opacity: 1;
+  }
+  .bento-index {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.75rem;
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    line-height: 1;
+    color: rgba(0, 200, 150, 0.08);
+    letter-spacing: -0.04em;
+    pointer-events: none;
+    transition: color 0.5s ease, transform 0.5s ease;
+  }
+  .bento-item:hover .bento-index {
+    color: rgba(0, 200, 150, 0.2);
+    transform: scale(1.05);
+  }
+  .bento-card__inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    max-width: calc(100% - 3.5rem);
+  }
+  .bento-label {
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--emerald);
+    opacity: 0.8;
+  }
+  .bento-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 2vw, 1.75rem);
+    line-height: 1.1;
+    color: #f5f5f7;
+    letter-spacing: -0.01em;
+    margin-top: 0.2rem;
+  }
+  .bento-desc {
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: rgba(232, 232, 237, 0.62);
+    margin-top: 0.25rem;
+  }
+  .bento-metric {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+  .bento-metric__value {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--emerald);
+    letter-spacing: -0.01em;
+  }
+  .bento-halo {
+    position: absolute;
+    top: -30%;
+    right: -20%;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle,
+      rgba(0, 200, 150, 0.12) 0%,
+      transparent 60%
+    );
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    pointer-events: none;
+  }
+  .bento-item:hover .bento-halo {
+    opacity: 1;
+  }
+
+  /* ============================================================ */
   /* BRAND LOGOS — monochrome marquee row                         */
   /* ============================================================ */
   .brand-logos {
@@ -3002,26 +3207,56 @@
     align-self: center;
     display: inline-grid;
     grid-template-columns: 1fr 1fr;
-    padding: 5px;
+    padding: 6px;
     border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    background: rgba(255, 255, 255, 0.025);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.05) 0%,
+      rgba(255, 255, 255, 0.02) 100%
+    );
+    backdrop-filter: blur(22px) saturate(1.2);
+    -webkit-backdrop-filter: blur(22px) saturate(1.2);
     overflow: hidden;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.08),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.3),
+      0 20px 50px -25px rgba(0, 0, 0, 0.6);
+  }
+  /* Subtle glass slots behind both buttons — always visible for balance */
+  .process-toggle::before,
+  .process-toggle::after {
+    content: "";
+    position: absolute;
+    top: 6px;
+    bottom: 6px;
+    width: calc(50% - 6px);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.015);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .process-toggle::before {
+    left: 6px;
+  }
+  .process-toggle::after {
+    right: 6px;
   }
   .process-toggle__thumb {
     position: absolute;
-    top: 5px;
-    bottom: 5px;
-    width: calc(50% - 5px);
+    top: 6px;
+    bottom: 6px;
+    left: 6px;
+    width: calc(50% - 6px);
     border-radius: 999px;
     background: linear-gradient(135deg, #00c896 0%, #1ad29c 100%);
     box-shadow:
-      0 6px 22px -6px rgba(0, 200, 150, 0.55),
-      0 0 0 1px rgba(0, 200, 150, 0.4) inset;
-    transition: transform 0.42s cubic-bezier(0.22, 0.85, 0.25, 1);
-    z-index: 0;
+      0 8px 28px -6px rgba(0, 200, 150, 0.55),
+      inset 0 1px 0 rgba(255, 255, 255, 0.25),
+      inset 0 0 0 1px rgba(0, 200, 150, 0.4);
+    transition: transform 0.45s cubic-bezier(0.22, 0.85, 0.25, 1);
+    z-index: 1;
   }
   .process-toggle--ia .process-toggle__thumb {
     transform: translateX(0);
@@ -3031,7 +3266,7 @@
   }
   .process-toggle__btn {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     width: 100%;
     text-align: center;
     padding: 0.7rem 1.6rem;
@@ -3047,15 +3282,27 @@
     transition: color 0.35s ease;
     white-space: nowrap;
   }
+  .process-toggle__btn-full {
+    display: inline;
+  }
+  .process-toggle__btn-short {
+    display: none;
+  }
   @media (max-width: 640px) {
     .process-toggle {
       width: 100%;
       max-width: 100%;
     }
     .process-toggle__btn {
-      padding: 0.65rem 0.4rem;
-      font-size: 0.58rem;
-      letter-spacing: 0.08em;
+      padding: 0.7rem 0.8rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+    }
+    .process-toggle__btn-full {
+      display: none;
+    }
+    .process-toggle__btn-short {
+      display: inline;
     }
   }
   .process-toggle__btn:hover {

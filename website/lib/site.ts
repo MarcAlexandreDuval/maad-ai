@@ -39,12 +39,12 @@ export const NAV = {
 };
 
 export const SOCIALS = [
-  { name: "X", href: "#", label: "Suivre sur X (Twitter)" },
-  { name: "Instagram", href: "#", label: "Suivre sur Instagram" },
-  { name: "TikTok", href: "#", label: "Suivre sur TikTok" },
-  { name: "YouTube", href: "#", label: "S'abonner sur YouTube" },
-  { name: "Facebook", href: "#", label: "Suivre sur Facebook" },
-  { name: "LinkedIn", href: "#", label: "Suivre sur LinkedIn" },
+  { name: "X", href: "https://x.com/maad_ai", label: "Suivre sur X (Twitter)" },
+  { name: "Instagram", href: "https://www.instagram.com/maadai_tech/", label: "Suivre sur Instagram" },
+  { name: "TikTok", href: "https://www.tiktok.com/@maad_ai", label: "Suivre sur TikTok" },
+  { name: "YouTube", href: "https://www.youtube.com/@MAAD-AI", label: "S'abonner sur YouTube" },
+  { name: "Facebook", href: "https://www.facebook.com/share/1CPAb92h3c/", label: "Suivre sur Facebook" },
+  { name: "LinkedIn", href: "https://www.linkedin.com/company/maad-ai/", label: "Suivre sur LinkedIn" },
 ] as const;
 
 export const INDUSTRIES = [

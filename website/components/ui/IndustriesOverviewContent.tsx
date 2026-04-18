@@ -8,7 +8,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { INDUSTRIES } from "@/lib/site";
 
 const STATS = [
-  { value: "6", label: "industries desservies au Québec" },
+  { value: "6+", label: "industries spécialisées au Québec" },
   { value: "100 %", label: "des stratégies adaptées au secteur" },
   { value: "IA + SEO", label: "combinés pour chaque verticale" },
   { value: "24/7", label: "systèmes qui travaillent sans arrêt" },

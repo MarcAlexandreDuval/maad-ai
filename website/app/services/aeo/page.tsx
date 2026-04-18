@@ -3,6 +3,7 @@ import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { FAQAccordion } from "@/components/ui/FAQAccordion";
 import { CTABanner } from "@/components/ui/CTABanner";
+import { BlogCTA } from "@/components/ui/BlogCTA";
 import {
   ComparisonTable,
   NumberedList,
@@ -233,6 +234,8 @@ export default function AeoPage() {
         </div>
         <FAQAccordion items={faqs} />
       </SectionWrapper>
+
+      <BlogCTA topic="l'AEO, les featured snippets et les AI Overviews" />
 
       <RelatedServices
         items={[

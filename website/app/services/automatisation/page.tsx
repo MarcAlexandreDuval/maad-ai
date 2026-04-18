@@ -3,6 +3,7 @@ import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { FAQAccordion } from "@/components/ui/FAQAccordion";
 import { CTABanner } from "@/components/ui/CTABanner";
+import { BlogCTA } from "@/components/ui/BlogCTA";
 import { IconAutomation } from "@/components/animations/ServiceIcons";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { buildMetadata } from "@/lib/metadata";
@@ -190,6 +191,8 @@ export default function AutomatisationPage() {
         </div>
         <FAQAccordion items={faqs} />
       </SectionWrapper>
+
+      <BlogCTA topic="l'automatisation, les agents IA et la productivité" />
 
       {/* Liens services reliés */}
       <SectionWrapper tight>

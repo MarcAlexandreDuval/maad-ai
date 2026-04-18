@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import { Breadcrumb } from "./Breadcrumb";
 
 type Props = {
-  eyebrow: string;
+  eyebrow?: string;
   title: ReactNode;
   lede: ReactNode;
   breadcrumbs: { name: string; path: string }[];
@@ -22,9 +22,11 @@ export function PageHero({ eyebrow, title, lede, breadcrumbs, meta, visual }: Pr
 
         <div className="grid lg:grid-cols-[1fr_auto] gap-10 items-end">
           <div className="max-w-4xl">
-            <div className="eyebrow mb-8">
-              <span>{eyebrow}</span>
-            </div>
+            {eyebrow && (
+              <div className="eyebrow mb-8">
+                <span>{eyebrow}</span>
+              </div>
+            )}
             <h1 className="text-display mb-8">{title}</h1>
             <div className="text-lg md:text-xl text-muted max-w-2xl leading-relaxed">
               {lede}

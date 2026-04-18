@@ -3,6 +3,7 @@ import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { FAQAccordion } from "@/components/ui/FAQAccordion";
 import { CTABanner } from "@/components/ui/CTABanner";
+import { BlogCTA } from "@/components/ui/BlogCTA";
 import { NumberedList, RelatedServices } from "@/components/ui/ServicePageSections";
 import { IconGeo } from "@/components/animations/ServiceIcons";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -231,6 +232,8 @@ export default function GeoPage() {
         </div>
         <FAQAccordion items={faqs} />
       </SectionWrapper>
+
+      <BlogCTA topic="le GEO, ChatGPT, Perplexity et la citation par les IA" />
 
       <RelatedServices
         items={[

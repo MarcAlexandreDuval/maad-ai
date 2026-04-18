@@ -3,6 +3,7 @@ import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { FAQAccordion } from "@/components/ui/FAQAccordion";
 import { CTABanner } from "@/components/ui/CTABanner";
+import { BlogCTA } from "@/components/ui/BlogCTA";
 import { NumberedList, RelatedServices } from "@/components/ui/ServicePageSections";
 import { IconWeb } from "@/components/animations/ServiceIcons";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -162,6 +163,8 @@ export default function ConceptionWebPage() {
         </div>
         <FAQAccordion items={faqs} />
       </SectionWrapper>
+
+      <BlogCTA topic="la conception web, la performance et l'optimisation" />
 
       <RelatedServices
         items={[

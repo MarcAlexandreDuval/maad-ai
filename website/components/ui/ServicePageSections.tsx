@@ -32,14 +32,31 @@ export function NumberedList({
 }: {
   items: { n: string; t: string; d: string }[];
 }) {
+  // Pick bento variant based on item count
+  const variant =
+    items.length === 6
+      ? "bento-grid--6"
+      : items.length === 4
+        ? "bento-grid--4"
+        : items.length === 3
+          ? "bento-grid--3"
+          : "bento-grid--6";
+
   return (
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-      {items.map((i) => (
-        <GlassCard key={i.n}>
-          <div className="label-mono text-emerald mb-3">{i.n}</div>
-          <h3 className="text-display text-xl mb-3">{i.t}</h3>
-          <p className="text-sm text-muted">{i.d}</p>
-        </GlassCard>
+    <div className={`bento-grid ${variant}`}>
+      {items.map((item) => (
+        <div key={item.n} className="bento-item">
+          <article className="bento-card">
+            <span className="bento-index" aria-hidden>
+              {item.n}
+            </span>
+            <div className="bento-card__inner">
+              <h3 className="bento-title">{item.t}</h3>
+              <p className="bento-desc">{item.d}</p>
+            </div>
+            <div className="bento-halo" aria-hidden />
+          </article>
+        </div>
       ))}
     </div>
   );

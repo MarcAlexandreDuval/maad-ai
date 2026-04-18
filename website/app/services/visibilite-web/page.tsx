@@ -2,6 +2,7 @@ import { PageHero } from "@/components/ui/PageHero";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { CTABanner } from "@/components/ui/CTABanner";
+import { FAQAccordion } from "@/components/ui/FAQAccordion";
 import {
   IconSeo,
   IconSeoLocal,
@@ -88,7 +89,6 @@ export default function VisibilitePillarPage() {
       <PageHero
         eyebrow="Pôle 02 — Visibilité Web"
         breadcrumbs={[
-          { name: "Services", path: "/services/visibilite-web" },
           { name: "Visibilité Web", path: "/services/visibilite-web" },
         ]}
         title={
@@ -203,6 +203,44 @@ export default function VisibilitePillarPage() {
             </div>
             <Link href="/services/intelligence-artificielle" className="btn btn-ghost whitespace-nowrap">
               Voir Intelligence Artificielle
+            </Link>
+          </div>
+        </GlassCard>
+      </SectionWrapper>
+
+      {/* FAQ */}
+      <SectionWrapper>
+        <div className="mb-12">
+          <div className="label-mono mb-5">Questions fréquentes</div>
+          <h2 className="text-display">
+            Ce qu&apos;on nous demande{" "}
+            <span className="text-italic-serif text-emerald">chaque semaine</span>.
+          </h2>
+        </div>
+        <FAQAccordion items={faqs} />
+      </SectionWrapper>
+
+      {/* Blog CTA */}
+      <SectionWrapper>
+        <GlassCard>
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+            <div className="max-w-2xl">
+              <div className="label-mono mb-3">Pour aller plus loin</div>
+              <h3 className="text-display text-2xl md:text-3xl mb-3">
+                Envie d&apos;en{" "}
+                <span className="text-italic-serif text-emerald">
+                  savoir plus
+                </span>{" "}
+                sur le SEO et les IA ?
+              </h3>
+              <p className="text-muted">
+                On publie des guides et des analyses sur le SEO, l&apos;AEO, le
+                GEO et comment les PME du Québec peuvent se positionner sur
+                Google et les IA génératives.
+              </p>
+            </div>
+            <Link href="/blog" className="btn btn-ghost whitespace-nowrap">
+              Lire le blog →
             </Link>
           </div>
         </GlassCard>

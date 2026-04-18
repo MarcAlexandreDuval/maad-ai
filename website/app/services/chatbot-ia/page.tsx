@@ -3,6 +3,7 @@ import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { FAQAccordion } from "@/components/ui/FAQAccordion";
 import { CTABanner } from "@/components/ui/CTABanner";
+import { BlogCTA } from "@/components/ui/BlogCTA";
 import { IconChatbot } from "@/components/animations/ServiceIcons";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { buildMetadata } from "@/lib/metadata";
@@ -181,6 +182,8 @@ export default function ChatbotIAPage() {
         </div>
         <FAQAccordion items={faqs} />
       </SectionWrapper>
+
+      <BlogCTA topic="les chatbots IA, la conversion et le support automatisé" />
 
       {/* Liens */}
       <SectionWrapper tight>

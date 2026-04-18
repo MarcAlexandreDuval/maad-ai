@@ -97,9 +97,9 @@ const STEPS: Record<"ia" | "viz", Step[]> = {
 
 type Mode = "ia" | "viz";
 
-const TABS: { id: Mode; label: string }[] = [
-  { id: "ia", label: "Intelligence Artificielle" },
-  { id: "viz", label: "Visibilité Web" },
+const TABS: { id: Mode; label: string; shortLabel: string }[] = [
+  { id: "ia", label: "Intelligence Artificielle", shortLabel: "IA" },
+  { id: "viz", label: "Visibilité Web", shortLabel: "Visibilité" },
 ];
 
 export function ProcessTimeline() {
@@ -146,7 +146,8 @@ export function ProcessTimeline() {
             onClick={() => setMode(t.id)}
             onKeyDown={onTabKey}
           >
-            {t.label}
+            <span className="process-toggle__btn-full">{t.label}</span>
+            <span className="process-toggle__btn-short">{t.shortLabel}</span>
           </button>
         ))}
       </div>
