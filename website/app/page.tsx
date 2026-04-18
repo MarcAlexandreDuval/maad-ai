@@ -343,7 +343,8 @@ export default function HomePage() {
               </Reveal>
               <Reveal variant="fade-up" delay={120}>
                 <h2 id="visibility-heading" className="text-display">
-                  Visible sur Google.{" "}
+                  Visible sur Google.
+                  <br />
                   <em className="text-italic-serif text-emerald">
                     Recommandé
                   </em>{" "}
@@ -373,59 +374,59 @@ export default function HomePage() {
           <div className="viz-bento">
             {[
               {
-                href: "/services/seo",
-                anim: <SeoRankClimbAnim />,
-                number: "V.01",
-                title: "SEO",
-                desc: "La fondation. Sans bases techniques solides, l'AEO et le GEO ne performent pas. On te ranke dans Google — pour de vrai.",
-                cta: "Voir notre service SEO",
-                large: false,
-                priority: false,
-              },
-              {
-                href: "/services/seo-local",
-                anim: <SeoLocalMapAnim />,
-                number: "V.02",
-                title: "SEO Local",
-                desc: "Ton quartier, ta ville, ta région. On te fait apparaître dans Google Maps et le pack local — partout au Québec.",
-                cta: "Voir le SEO local",
-                large: false,
-                priority: false,
-              },
-              {
-                href: "/services/conception-web",
-                anim: <WebResponsiveAnim />,
-                number: "V.03",
-                title: "Conception Web",
-                desc: "Sites rapides, codés main, pas de templates. L'AEO et le GEO intégrés dès la première ligne de code.",
-                cta: "Voir la conception web",
-                large: false,
-                priority: false,
-              },
-              {
                 href: "/services/aeo",
                 anim: <AeoSnippetAnim />,
-                number: "V.04",
+                number: "V.01",
                 title: "AEO",
                 desc: "Answer Engine Optimization. Au lieu de ranker #1, tu deviens LA réponse — featured snippets, AI Overviews, assistants vocaux.",
                 cta: "Découvrir l'AEO",
-                large: true,
+                size: "xl" as const,
                 priority: true,
               },
               {
                 href: "/services/geo",
                 anim: <GeoChatCitationAnim />,
-                number: "V.05",
+                number: "V.02",
                 title: "GEO",
                 desc: "Generative Engine Optimization. Pour être cité et recommandé par ChatGPT, Perplexity, Claude et Gemini — pas juste indexé.",
                 cta: "Découvrir le GEO",
-                large: true,
+                size: "lg" as const,
                 priority: true,
+              },
+              {
+                href: "/services/seo",
+                anim: <SeoRankClimbAnim />,
+                number: "V.03",
+                title: "SEO",
+                desc: "La fondation. Sans bases techniques solides, l'AEO et le GEO ne performent pas. On te ranke dans Google — pour de vrai.",
+                cta: "Voir le SEO",
+                size: "md" as const,
+                priority: false,
+              },
+              {
+                href: "/services/seo-local",
+                anim: <SeoLocalMapAnim />,
+                number: "V.04",
+                title: "SEO Local",
+                desc: "Ton quartier, ta ville, ta région. On te fait apparaître dans Google Maps et le pack local — partout au Québec.",
+                cta: "Voir le SEO local",
+                size: "md" as const,
+                priority: false,
+              },
+              {
+                href: "/services/conception-web",
+                anim: <WebResponsiveAnim />,
+                number: "V.05",
+                title: "Conception Web",
+                desc: "Sites rapides, codés main, pas de templates. L'AEO et le GEO intégrés dès la première ligne de code.",
+                cta: "Voir la conception web",
+                size: "md" as const,
+                priority: false,
               },
             ].map((s, i) => (
               <article
                 key={s.href}
-                className={`viz-bento-item ${s.large ? "ia-card--lg" : ""}`}
+                className={`viz-bento-item viz-bento-item--${s.size}`}
               >
                 <Reveal
                   variant="fade-up"

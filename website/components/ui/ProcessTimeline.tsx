@@ -215,7 +215,14 @@ export function ProcessTimeline() {
                       <span className="proc-step__num">
                         {String(i + 1).padStart(2, "0")}
                       </span>
-                      <h3 className="proc-step__title">{step.title}</h3>
+                      <span className="proc-step__text">
+                        <h3 className="proc-step__title">{step.title}</h3>
+                        {!expanded && (
+                          <span className="proc-step__preview">
+                            {step.desc.split(".")[0]}.
+                          </span>
+                        )}
+                      </span>
                       <span className="proc-step__chev" aria-hidden>
                         →
                       </span>

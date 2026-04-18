@@ -186,11 +186,11 @@ export function VideoHero() {
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full bg-emerald/[0.08] blur-[120px] pointer-events-none" />
 
         <div
-          className={`hero-content container-rail relative z-10 pt-40 md:pt-44 pb-40 ${
+          className={`hero-content container-rail relative z-10 pt-32 md:pt-44 pb-28 md:pb-40 ${
             contentVisible ? "hero-content--visible" : ""
           }`}
         >
-          <div className="flex flex-col gap-8 max-w-5xl">
+          <div className="flex flex-col gap-6 md:gap-8 max-w-5xl">
             <div className="relative">
               <p
                 className="text-display tagline relative"
@@ -222,7 +222,7 @@ export function VideoHero() {
               </p>
             </div>
 
-            <p className="hero-subtitle text-lg text-muted min-h-[6.5rem]">
+            <p className="hero-subtitle text-lg text-muted min-h-[5rem] md:min-h-[6.5rem]">
               <Typewriter
                 active={titleDone}
                 startDelay={450}

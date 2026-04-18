@@ -2754,13 +2754,24 @@
     .viz-bento {
       grid-template-columns: repeat(6, 1fr);
     }
-    /* row 1 — 3 standard cards (each 2 cols of 6) */
-    .viz-bento-item {
+    /* True asymmetric bento:
+       Row 1: XL (AEO, span 4) + LG (GEO, span 2)
+       Row 2: 3 × MD foundations (each span 2) */
+    .viz-bento-item--xl {
+      grid-column: span 4;
+    }
+    .viz-bento-item--lg {
       grid-column: span 2;
     }
-    /* row 2 — 2 priority hero cards (each 3 cols of 6) */
-    .viz-bento .ia-card--lg {
-      grid-column: span 3;
+    .viz-bento-item--md {
+      grid-column: span 2;
+    }
+    /* XL card visual emphasis */
+    .viz-bento-item--xl .ia-card {
+      min-height: 420px;
+    }
+    .viz-bento-item--xl .ia-card-title {
+      font-size: clamp(2rem, 3vw, 2.75rem);
     }
   }
 
@@ -3563,6 +3574,31 @@
   }
   .proc-step--expanded .proc-step__title {
     font-size: 1.45rem;
+  }
+  .proc-step__text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    min-width: 0;
+    text-align: left;
+  }
+  .proc-step__preview {
+    font-size: 0.82rem;
+    line-height: 1.45;
+    color: rgba(232, 232, 237, 0.5);
+    font-family: var(--font-sans);
+    font-weight: 400;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  @media (max-width: 640px) {
+    .proc-step__preview {
+      font-size: 0.75rem;
+      -webkit-line-clamp: 1;
+    }
   }
   .proc-step__chev {
     color: rgba(232, 232, 237, 0.4);

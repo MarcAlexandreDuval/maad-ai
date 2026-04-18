@@ -37,15 +37,15 @@ export function Footer() {
               <div className="text-emerald opacity-80 mb-1">Services</div>
               <Link
                 href="/services/intelligence-artificielle"
-                className="hover:text-emerald transition-colors"
+                className="hover:text-emerald transition-colors whitespace-nowrap"
               >
-                Intelligence Artificielle
+                IA
               </Link>
               <Link
                 href="/services/visibilite-web"
-                className="hover:text-emerald transition-colors"
+                className="hover:text-emerald transition-colors whitespace-nowrap"
               >
-                Visibilité Web
+                Visibilité
               </Link>
             </div>
 
