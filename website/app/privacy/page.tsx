@@ -37,8 +37,8 @@ export default function PrivacyPage() {
               01 — Responsable du traitement
             </h2>
             <p>
-              {SITE.name}, opérée par {SITE.founder} à {SITE.city}, {SITE.province}. Pour
-              toute question relative à tes données : {SITE.email}.
+              {SITE.name}, opérée par {SITE.founder} au {SITE.province}, Canada.
+              Pour toute question relative à tes données : {SITE.email}.
             </p>
           </section>
 

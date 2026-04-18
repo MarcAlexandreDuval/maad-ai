@@ -6,7 +6,7 @@ import { SITE } from "@/lib/site";
 export const metadata = buildMetadata({
   title: "Conditions d'utilisation",
   description:
-    "Conditions d'utilisation du site MAAD-AI et des services offerts par MAAD-AI à Joliette, Québec.",
+    "Conditions d'utilisation du site MAAD-AI et des services offerts par MAAD-AI au Québec.",
   path: "/terms",
 });
 
@@ -37,9 +37,9 @@ export default function TermsPage() {
               01 — Qui on est
             </h2>
             <p>
-              {SITE.name} est une agence d&apos;intelligence artificielle opérée par{" "}
-              {SITE.founder}, basée à {SITE.city}, {SITE.province}, Canada. Pour toute
-              question : {SITE.email}.
+              {SITE.name} est une agence d&apos;intelligence artificielle et de
+              visibilité web opérée par {SITE.founder}, basée au {SITE.province},
+              Canada. Pour toute question : {SITE.email}.
             </p>
           </section>
 
@@ -93,8 +93,8 @@ export default function TermsPage() {
               06 — Droit applicable
             </h2>
             <p>
-              Ces conditions sont régies par les lois du Québec et du Canada. Tout litige
-              relève des tribunaux du district judiciaire de Joliette.
+              Ces conditions sont régies par les lois du Québec et du Canada. Tout
+              litige relève des tribunaux compétents de la province du Québec.
             </p>
           </section>
 
