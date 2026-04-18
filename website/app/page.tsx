@@ -380,7 +380,7 @@ export default function HomePage() {
                 title: "AEO",
                 desc: "Answer Engine Optimization. Au lieu de ranker #1, tu deviens LA réponse — featured snippets, AI Overviews, assistants vocaux.",
                 cta: "Découvrir l'AEO",
-                size: "xl" as const,
+                size: "lg" as const,
                 priority: true,
               },
               {

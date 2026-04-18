@@ -2754,24 +2754,15 @@
     .viz-bento {
       grid-template-columns: repeat(6, 1fr);
     }
-    /* True asymmetric bento:
-       Row 1: XL (AEO, span 4) + LG (GEO, span 2)
+    /* Balanced bento:
+       Row 1: 2 × LG priority cards (each span 3)
        Row 2: 3 × MD foundations (each span 2) */
-    .viz-bento-item--xl {
-      grid-column: span 4;
-    }
+    .viz-bento-item--xl,
     .viz-bento-item--lg {
-      grid-column: span 2;
+      grid-column: span 3;
     }
     .viz-bento-item--md {
       grid-column: span 2;
-    }
-    /* XL card visual emphasis */
-    .viz-bento-item--xl .ia-card {
-      min-height: 420px;
-    }
-    .viz-bento-item--xl .ia-card-title {
-      font-size: clamp(2rem, 3vw, 2.75rem);
     }
   }
 
