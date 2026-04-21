@@ -72,20 +72,20 @@ const USE_CASES = [
   {
     industry: "B2B",
     title: "Agent SDR",
-    desc: "Qualifie 3× plus de leads entrants, route vers le bon commercial, enrichit le CRM automatiquement.",
-    metric: "+3× leads qualifiés",
+    desc: "Qualifie tes leads entrants, enrichit les infos en temps réel, route vers le bon commercial et crée la fiche CRM. Il travaille quand tu dors, les fins de semaine et pendant tes vacances — sans jamais manquer un lead chaud.",
+    metric: "Pipeline prévisible",
   },
   {
     industry: "E-commerce",
     title: "Support 24/7",
-    desc: "Réponds aux questions produit la nuit, récupère les paniers abandonnés, réduis les tickets support.",
-    metric: "−40 % de tickets",
+    desc: "Répond aux questions produit la nuit, guide les commandes, récupère les paniers abandonnés et trie les tickets par urgence avant que ton équipe arrive le matin.",
+    metric: "Support sans rupture",
   },
   {
     industry: "Services",
     title: "Admin automatisé",
-    desc: "Gère les rendez-vous, envoie les rappels, prépare les dossiers clients — libère 10 h/semaine.",
-    metric: "+10 h/semaine",
+    desc: "Gère les rendez-vous, envoie les rappels, prépare les dossiers clients et s'occupe de la facturation récurrente — les tâches répétitives deviennent invisibles.",
+    metric: "Agenda libéré",
   },
 ];
 
