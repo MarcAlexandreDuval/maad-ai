@@ -4,12 +4,12 @@ import { GlassCard } from "@/components/ui/GlassCard";
 import { CTABanner } from "@/components/ui/CTABanner";
 import { FAQAccordion } from "@/components/ui/FAQAccordion";
 import {
-  IconSeo,
-  IconSeoLocal,
-  IconAeo,
-  IconGeo,
-  IconWeb,
-} from "@/components/animations/ServiceIcons";
+  SeoRankClimbAnim,
+  SeoLocalMapAnim,
+  AeoSnippetAnim,
+  GeoChatCitationAnim,
+  WebResponsiveAnim,
+} from "@/components/animations/VisibilityServiceAnimations";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { buildMetadata } from "@/lib/metadata";
 import { serviceSchema, faqSchema } from "@/lib/schema";
@@ -24,36 +24,54 @@ export const metadata = buildMetadata({
 
 const services = [
   {
-    icon: <IconSeo />,
-    href: "/services/seo",
-    label: "SEO",
-    def: "La fondation. Optimisation technique, contenu et autorité pour ranker dans Google.",
-  },
-  {
-    icon: <IconSeoLocal />,
-    href: "/services/seo-local",
-    label: "SEO Local",
-    def: "Google Maps, pack local, avis. Pour être trouvé par les clients du quartier.",
-  },
-  {
-    icon: <IconAeo />,
+    anim: <AeoSnippetAnim />,
     href: "/services/aeo",
     label: "AEO",
-    def: "Answer Engine Optimization. Deviens la réponse directe — featured snippets et AI Overviews.",
+    number: "V.01",
+    def: "Answer Engine Optimization. Au lieu de ranker #1, tu deviens LA réponse — featured snippets, AI Overviews, assistants vocaux.",
+    cta: "Découvrir l'AEO",
     priority: true,
+    size: "lg" as const,
   },
   {
-    icon: <IconGeo />,
+    anim: <GeoChatCitationAnim />,
     href: "/services/geo",
     label: "GEO",
-    def: "Generative Engine Optimization. Sois cité et recommandé par ChatGPT, Perplexity, Claude.",
+    number: "V.02",
+    def: "Generative Engine Optimization. Pour être cité et recommandé par ChatGPT, Perplexity, Claude et Gemini — pas juste indexé.",
+    cta: "Découvrir le GEO",
     priority: true,
+    size: "lg" as const,
   },
   {
-    icon: <IconWeb />,
+    anim: <SeoRankClimbAnim />,
+    href: "/services/seo",
+    label: "SEO",
+    number: "V.03",
+    def: "La fondation. Sans bases techniques solides, l'AEO et le GEO ne performent pas. On te ranke dans Google — pour de vrai.",
+    cta: "Voir le SEO",
+    priority: false,
+    size: "md" as const,
+  },
+  {
+    anim: <SeoLocalMapAnim />,
+    href: "/services/seo-local",
+    label: "SEO Local",
+    number: "V.04",
+    def: "Ton quartier, ta ville, ta région. On te fait apparaître dans Google Maps et le pack local — partout au Québec.",
+    cta: "Voir le SEO local",
+    priority: false,
+    size: "md" as const,
+  },
+  {
+    anim: <WebResponsiveAnim />,
     href: "/services/conception-web",
     label: "Conception Web",
-    def: "Sites codés main, rapides, avec l'AEO et le GEO intégrés dès la conception.",
+    number: "V.05",
+    def: "Sites rapides, codés main, pas de templates. L'AEO et le GEO intégrés dès la première ligne de code.",
+    cta: "Voir la conception web",
+    priority: false,
+    size: "md" as const,
   },
 ];
 
@@ -149,7 +167,7 @@ export default function VisibilitePillarPage() {
         </div>
       </SectionWrapper>
 
-      {/* 5 services */}
+      {/* 5 services en bento */}
       <SectionWrapper>
         <div className="mb-14 max-w-3xl">
           <div className="label-mono mb-5">Les 5 leviers</div>
@@ -158,23 +176,25 @@ export default function VisibilitePillarPage() {
             <span className="text-italic-serif text-emerald">Une</span> stratégie.
           </h2>
         </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((s, i) => (
-            <GlassCard key={s.href} href={s.href}>
-              <div className="flex items-start justify-between mb-5">
-                {s.icon}
-                <div className="label-mono text-emerald">v.0{i + 1}</div>
-              </div>
-              <div className="flex items-center gap-2 mb-3">
-                <h3 className="text-display text-2xl">{s.label}</h3>
-                {s.priority && (
-                  <span className="label-mono text-[0.6rem] text-emerald border border-emerald/40 px-2 py-0.5 rounded-full">
-                    PRIORITAIRE
-                  </span>
-                )}
-              </div>
-              <p className="text-sm text-muted">{s.def}</p>
-            </GlassCard>
+        <div className="viz-bento">
+          {services.map((s) => (
+            <article
+              key={s.href}
+              className={`viz-bento-item viz-bento-item--${s.size}`}
+            >
+              <Link
+                href={s.href}
+                className={`block h-full ia-card ${s.priority ? "ia-card--priority" : ""}`}
+              >
+                {s.anim}
+                <span className="ia-card-number">{s.number}</span>
+                <h3 className="ia-card-title">{s.label}</h3>
+                <p className="ia-card-desc">{s.def}</p>
+                <span className="ia-card-cta">
+                  {s.cta} <span aria-hidden>→</span>
+                </span>
+              </Link>
+            </article>
           ))}
         </div>
       </SectionWrapper>
