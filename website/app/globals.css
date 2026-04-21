@@ -1861,10 +1861,46 @@
     color: rgba(232, 232, 237, 0.62);
     margin-top: 0.25rem;
   }
+  .bento-features {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    list-style: none;
+    padding-left: 0;
+  }
+  .bento-features__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: rgba(232, 232, 237, 0.72);
+  }
+  .bento-features__check {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(0, 200, 150, 0.12);
+    border: 1px solid rgba(0, 200, 150, 0.35);
+    color: var(--emerald);
+    font-size: 0.62rem;
+    margin-top: 0.12rem;
+  }
   .bento-metric {
     margin-top: 1rem;
     padding-top: 1rem;
     border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+  .bento-features + .bento-metric {
+    margin-top: 1.25rem;
+    padding-top: 1rem;
   }
   .bento-metric__value {
     font-family: var(--font-display);

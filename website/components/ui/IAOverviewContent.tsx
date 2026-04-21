@@ -72,7 +72,15 @@ const USE_CASES = [
   {
     industry: "B2B",
     title: "Agent SDR",
-    desc: "Qualifie tes leads entrants, enrichit les infos en temps réel, route vers le bon commercial et crée la fiche CRM. Il travaille quand tu dors, les fins de semaine et pendant tes vacances — sans jamais manquer un lead chaud.",
+    desc: "Un commercial numérique qui qualifie tes leads entrants, enrichit les données en temps réel et route chaque opportunité vers le bon humain — sans jamais prendre de pause.",
+    features: [
+      "Qualification instantanée selon ton ICP",
+      "Enrichissement automatique via LinkedIn & web",
+      "Création et mise à jour des fiches CRM",
+      "Priorisation des leads chauds",
+      "Suivi multi-canal (email, LinkedIn, SMS)",
+      "Disponible 24/7, weekends inclus",
+    ],
     metric: "Pipeline prévisible",
   },
   {
@@ -300,6 +308,7 @@ export function IAOverviewContent({ faqs }: { faqs: FAQ[] }) {
             title: u.title,
             desc: u.desc,
             metric: u.metric,
+            features: u.features,
           }))}
         />
       </SectionWrapper>

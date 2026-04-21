@@ -7,6 +7,7 @@ type Item = {
   title: string;
   desc: string;
   metric?: string;
+  features?: string[];
 };
 
 /**
@@ -39,6 +40,18 @@ export function UseCasesBento({ items }: { items: Item[] }) {
               <div className="bento-label">{item.label}</div>
               <h3 className="bento-title">{item.title}</h3>
               <p className="bento-desc">{item.desc}</p>
+              {item.features && item.features.length > 0 && (
+                <ul className="bento-features">
+                  {item.features.map((f) => (
+                    <li key={f} className="bento-features__item">
+                      <span className="bento-features__check" aria-hidden>
+                        ✓
+                      </span>
+                      <span>{f}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
               {item.metric && (
                 <div className="bento-metric">
                   <span className="bento-metric__value">{item.metric}</span>
