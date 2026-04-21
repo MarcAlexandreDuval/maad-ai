@@ -19,8 +19,8 @@ type FAQ = { q: string; a: string };
 const STATS = [
   { value: "24/7", label: "tes systèmes travaillent sans pause" },
   { value: "3x", label: "plus de rendement au quotidien" },
-  { value: "2-4 sem", label: "pour déployer ton premier agent" },
-  { value: "1 / 5", label: "PME québécoises utilisent déjà l'IA" },
+  { value: "2-4 sem", label: "pour activer ton premier agent" },
+  { value: "1 sur 5", label: "PME québécoises a déjà adopté l'IA" },
 ];
 
 const SERVICES = [
@@ -29,12 +29,12 @@ const SERVICES = [
     anim: <AgentsTodoAnim />,
     number: "I.01",
     title: "Agents IA",
-    desc: "Des employés numériques qui analysent, décident et agissent — 24/7, sans supervision.",
+    desc: "Des employés numériques qui analysent, décident et agissent — en continu, sans supervision.",
     benefits: [
-      "Travaille 24/7 sans pause",
+      "Travaille nuit et jour",
       "Apprend de ton contexte",
       "Connecté à tes outils",
-      "Scalable selon tes besoins",
+      "Évolutif selon tes besoins",
     ],
     cta: "Explorer",
   },
@@ -43,12 +43,12 @@ const SERVICES = [
     anim: <AutomationFlowAnim />,
     number: "I.02",
     title: "Automatisation",
-    desc: "Des workflows qui exécutent tes processus répétitifs — tu récupères des heures chaque semaine.",
+    desc: "Des flux de travail qui exécutent tes processus répétitifs — tu récupères des heures chaque semaine.",
     benefits: [
       "Connecte tous tes outils",
       "Élimine le travail manuel",
       "Déclenchements intelligents",
-      "Monitoring en temps réel",
+      "Suivi en temps réel",
     ],
     cta: "Explorer",
   },
@@ -57,7 +57,7 @@ const SERVICES = [
     anim: <ChatbotConversationAnim />,
     number: "I.03",
     title: "Chatbot IA",
-    desc: "Des assistants qui comprennent, qualifient et convertissent — web, WhatsApp et téléphone.",
+    desc: "Des assistants conversationnels qui comprennent, qualifient et convertissent — web, WhatsApp et téléphone.",
     benefits: [
       "Répond instantanément",
       "Qualifie tes leads",
@@ -74,12 +74,12 @@ const USE_CASES = [
     title: "Agent SDR",
     desc: "Un commercial numérique qui qualifie tes leads entrants, enrichit les données en temps réel et route chaque opportunité vers le bon humain — sans jamais prendre de pause.",
     features: [
-      "Qualification instantanée selon ton ICP",
+      "Qualification selon ton profil client idéal",
       "Enrichissement automatique via LinkedIn & web",
       "Création et mise à jour des fiches CRM",
       "Priorisation des leads chauds",
-      "Suivi multi-canal (email, LinkedIn, SMS)",
-      "Disponible 24/7, weekends inclus",
+      "Suivi multi-canal (courriel, LinkedIn, SMS)",
+      "Disponible en continu, fins de semaine incluses",
     ],
     metric: "Pipeline prévisible",
   },
@@ -112,7 +112,7 @@ const WHY = [
   },
   {
     title: "Évolutif",
-    desc: "On construit pour scaler. Tu commences petit, tu ajoutes des capacités au fur et à mesure que ton entreprise grandit.",
+    desc: "On construit pour faire grandir. Tu commences petit, tu ajoutes des capacités à mesure que ton entreprise évolue.",
   },
 ];
 
@@ -135,7 +135,7 @@ const STEPS = [
   {
     number: "04",
     title: "Évolution",
-    desc: "L'IA apprend et s'améliore. On monitore, on ajuste, on ajoute de nouvelles capacités selon ton évolution.",
+    desc: "L'IA apprend et s'améliore. On suit les performances, on ajuste, on ajoute de nouvelles capacités selon ton rythme.",
   },
 ];
 
@@ -239,13 +239,14 @@ export function IAOverviewContent({ faqs }: { faqs: FAQ[] }) {
             <Reveal variant="fade-up" delay={100}>
               <h2 className="text-display mb-6">
                 Pas juste des{" "}
-                <span className="text-italic-serif text-emerald">prompts</span>.
+                <span className="text-italic-serif text-emerald">gadgets</span>.
               </h2>
             </Reveal>
             <Reveal variant="fade-up" delay={180}>
               <p className="text-muted text-lg leading-relaxed">
-                N&apos;importe qui peut te vendre un workflow Zapier. On construit
-                des systèmes qui comprennent ton contexte, parlent ta langue et
+                N&apos;importe qui peut te vendre un petit script qui envoie un
+                courriel quand quelque chose se passe. On construit des systèmes
+                qui comprennent ton contexte, parlent ta langue et
                 s&apos;intègrent à ton opération réelle. L&apos;IA, c&apos;est un
                 outil — ce qui compte, c&apos;est comment on l&apos;utilise.
               </p>
@@ -272,7 +273,7 @@ export function IAOverviewContent({ faqs }: { faqs: FAQ[] }) {
         <Reveal variant="fade-up" delay={100}>
           <h2 className="text-display max-w-3xl mb-14">
             Quatre étapes,{" "}
-            <span className="text-italic-serif text-emerald">zéro bullshit</span>.
+            <span className="text-italic-serif text-emerald">zéro détour</span>.
           </h2>
         </Reveal>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
