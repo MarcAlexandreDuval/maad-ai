@@ -30,8 +30,8 @@ export function Logo({
     return parts.join(" ");
   })();
 
-  // Eight slight rotations for the dense mesh
-  const rotations = [0, 2.5, 5, 7.5, 10, 12.5, 15, 17.5];
+  // 16 rotations for a denser, more visible mesh (matches official brand asset)
+  const rotations = [0, 1.25, 2.5, 3.75, 5, 6.25, 7.5, 8.75, 10, 11.25, 12.5, 13.75, 15, 16.25, 17.5, 18.75];
 
   return (
     <span
@@ -54,8 +54,8 @@ export function Logo({
               d={rosePath}
               transform={`rotate(${r} 50 50)`}
               stroke="currentColor"
-              strokeWidth="0.5"
-              strokeOpacity="0.55"
+              strokeWidth="0.6"
+              strokeOpacity="0.85"
               fill="none"
               strokeLinecap="round"
               strokeLinejoin="round"
