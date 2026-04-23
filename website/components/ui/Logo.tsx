@@ -1,68 +1,32 @@
+import Image from "next/image";
+
 type LogoProps = {
   size?: number;
   className?: string;
+  /** @deprecated kept for API compatibility; PNG colors are baked-in */
   color?: string;
   withWordmark?: boolean;
 };
 
 /**
- * MAAD-AI logo — 5-fold rose spirograph.
- * Generates a dense overlapping mesh of rose curves (r = cos(5θ/2))
- * at slight rotation offsets to create the hand-drawn spirograph look.
+ * MAAD-AI logo — official brand asset.
+ * PNG transparent (500x500 source) served via next/image for optimal sizing.
  */
 export function Logo({
   size = 40,
   className = "",
-  color = "currentColor",
   withWordmark = false,
 }: LogoProps) {
-  // Generate one rose curve path once
-  const rosePath = (() => {
-    const N = 360;
-    const parts: string[] = [];
-    for (let i = 0; i <= N; i++) {
-      const theta = (i / N) * 4 * Math.PI;
-      const r = Math.cos((5 * theta) / 2);
-      const x = 50 + 44 * r * Math.cos(theta);
-      const y = 50 + 44 * r * Math.sin(theta);
-      parts.push(`${i === 0 ? "M" : "L"}${x.toFixed(2)} ${y.toFixed(2)}`);
-    }
-    return parts.join(" ");
-  })();
-
-  // 16 rotations for a denser, more visible mesh (matches official brand asset)
-  const rotations = [0, 1.25, 2.5, 3.75, 5, 6.25, 7.5, 8.75, 10, 11.25, 12.5, 13.75, 15, 16.25, 17.5, 18.75];
-
   return (
-    <span
-      className={`inline-flex items-center gap-3 ${className}`}
-      style={{ color }}
-    >
-      <svg
+    <span className={`inline-flex items-center gap-3 ${className}`}>
+      <Image
+        src="/logo.png"
+        alt="MAAD-AI"
         width={size}
         height={size}
-        viewBox="0 0 100 100"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        aria-hidden="true"
+        priority
         className="shrink-0"
-      >
-        <g>
-          {rotations.map((r) => (
-            <path
-              key={r}
-              d={rosePath}
-              transform={`rotate(${r} 50 50)`}
-              stroke="currentColor"
-              strokeWidth="0.6"
-              strokeOpacity="0.85"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          ))}
-        </g>
-      </svg>
+      />
       {withWordmark && (
         <span className="text-display text-lg md:text-xl tracking-tight leading-none whitespace-nowrap">
           MAAD<span className="text-emerald">-AI</span>

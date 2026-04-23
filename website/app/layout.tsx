@@ -44,6 +44,22 @@ export const metadata: Metadata = {
     siteName: SITE.name,
     locale: SITE.locale,
     type: "website",
+    title: `${SITE.name} — Agence IA, SEO, AEO & GEO au Québec`,
+    description: SITE.description,
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: `${SITE.name} — Agence IA, SEO, AEO & GEO au Québec`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${SITE.name} — Agence IA, SEO, AEO & GEO au Québec`,
+    description: SITE.description,
+    images: ["/og-image.png"],
   },
 };
 
