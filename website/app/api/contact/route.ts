@@ -33,7 +33,7 @@ const BUDGET_LABELS: Record<string, string> = {
 
 export async function POST(req: Request) {
   try {
-    if (!process.env.RESEND_API_KEY) {
+    if (!(process.env.RESEND_API_KEY || process.env.resend_key)) {
       console.error("RESEND_API_KEY missing in env");
       return NextResponse.json(
         { ok: false, error: "Email service not configured" },
@@ -42,7 +42,7 @@ export async function POST(req: Request) {
     }
 
     // Lazy instantiation — avoids build-time crash if env var isn't loaded yet
-    const resend = new Resend(process.env.RESEND_API_KEY);
+    const resend = new Resend((process.env.RESEND_API_KEY || process.env.resend_key));
 
     const data = await req.json();
 
