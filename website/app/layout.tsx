@@ -7,26 +7,28 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { orgSchema, websiteSchema } from "@/lib/schema";
 import { SITE } from "@/lib/site";
 
+// Font perf: reduced from 6-8 woff2 files to 3.
+// Keeps brand identity (Fraunces variable) but drops unused weights.
 const display = Fraunces({
   subsets: ["latin"],
   variable: "--font-display",
   display: "swap",
   style: ["normal", "italic"],
-  axes: ["SOFT", "opsz"],
+  axes: ["opsz"], // dropped "SOFT" — not used in design tokens
 });
 
 const body = Outfit({
   subsets: ["latin"],
   variable: "--font-body",
   display: "swap",
-  weight: ["300", "400", "500", "600"],
+  weight: ["400", "600"], // dropped 300 + 500 — close to 400/600, barely visible diff
 });
 
 const mono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
   display: "swap",
-  weight: ["400", "500"],
+  weight: ["400"], // dropped 500 — label-mono uses normal
 });
 
 export const metadata: Metadata = {
