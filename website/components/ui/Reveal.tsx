@@ -52,10 +52,20 @@ export function Reveal({
     const el = ref.current;
     if (!el) return;
 
-    if (
-      typeof window !== "undefined" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    ) {
+    if (typeof window === "undefined") return;
+
+    // Skip animations entirely on:
+    //  - prefers-reduced-motion
+    //  - mobile viewport (< 768px) — too janky with 30+ Reveals on home
+    //  - slow connection (3g and below)
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const isMobile = window.innerWidth < 768;
+    const conn = (navigator as { connection?: { effectiveType?: string } }).connection;
+    const slowConnection = conn?.effectiveType
+      ? ["slow-2g", "2g", "3g"].includes(conn.effectiveType)
+      : false;
+
+    if (reduced || isMobile || slowConnection) {
       setVisible(true);
       return;
     }
