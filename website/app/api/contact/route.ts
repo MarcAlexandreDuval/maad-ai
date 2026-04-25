@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Force dynamic rendering — never evaluate this route at build time
+export const dynamic = "force-dynamic";
 
 // Escape HTML to prevent injection in the email body
 function escapeHtml(str: string): string {
@@ -39,6 +40,9 @@ export async function POST(req: Request) {
         { status: 500 }
       );
     }
+
+    // Lazy instantiation — avoids build-time crash if env var isn't loaded yet
+    const resend = new Resend(process.env.RESEND_API_KEY);
 
     const data = await req.json();
 
