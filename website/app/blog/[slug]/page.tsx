@@ -123,6 +123,15 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
           margin-bottom: 1.25rem;
           letter-spacing: -0.02em;
         }
+        .prose-custom h3 {
+          font-family: var(--font-display), serif;
+          font-size: 1.4rem;
+          font-weight: 500;
+          margin-top: 2rem;
+          margin-bottom: 0.75rem;
+          letter-spacing: -0.01em;
+          color: var(--bone);
+        }
         .prose-custom p {
           color: var(--bone-muted);
           line-height: 1.8;
@@ -162,17 +171,52 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
   );
 }
 
+// Parse markdown-style links [text](url) inside text → array of JSX elements
+function parseInlineLinks(text: string): React.ReactNode[] {
+  const parts: React.ReactNode[] = [];
+  const regex = /\[([^\]]+)\]\(([^)]+)\)/g;
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+  let key = 0;
+  while ((match = regex.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      parts.push(text.slice(lastIndex, match.index));
+    }
+    const [, label, href] = match;
+    if (href.startsWith("/") || href.startsWith("#")) {
+      parts.push(
+        <Link key={key++} href={href} className="text-emerald hover:underline">
+          {label}
+        </Link>
+      );
+    } else {
+      parts.push(
+        <a key={key++} href={href} target="_blank" rel="noreferrer" className="text-emerald hover:underline">
+          {label}
+        </a>
+      );
+    }
+    lastIndex = regex.lastIndex;
+  }
+  if (lastIndex < text.length) {
+    parts.push(text.slice(lastIndex));
+  }
+  return parts.length > 0 ? parts : [text];
+}
+
 function SectionRenderer({ section }: { section: Section }) {
   switch (section.kind) {
     case "h2":
       return <h2>{section.text}</h2>;
+    case "h3":
+      return <h3>{section.text}</h3>;
     case "p":
-      return <p className={section.bold ? "lead" : ""}>{section.text}</p>;
+      return <p className={section.bold ? "lead" : ""}>{parseInlineLinks(section.text)}</p>;
     case "ul":
       return (
         <ul>
           {section.items.map((it, i) => (
-            <li key={i}>{it}</li>
+            <li key={i}>{parseInlineLinks(it)}</li>
           ))}
         </ul>
       );
@@ -184,7 +228,7 @@ function SectionRenderer({ section }: { section: Section }) {
               <strong>
                 {String(i + 1).padStart(2, "0")} — {it.t}
               </strong>
-              {it.d}
+              {parseInlineLinks(it.d)}
             </li>
           ))}
         </ol>
@@ -219,7 +263,69 @@ function SectionRenderer({ section }: { section: Section }) {
     case "callout":
       return (
         <div className="glass-flat p-6 my-8 border-l-2 border-emerald">
-          <p className="text-bone italic font-medium m-0 text-lg">{section.text}</p>
+          <p className="text-bone italic font-medium m-0 text-lg">{parseInlineLinks(section.text)}</p>
+        </div>
+      );
+    case "stats":
+      return (
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 my-10">
+          {section.items.map((stat, i) => (
+            <div key={i} className="glass-flat p-5 text-center">
+              <div className="text-display text-3xl md:text-4xl text-emerald mb-2 leading-none">
+                {stat.value}
+              </div>
+              <div className="label-mono text-[0.62rem] leading-tight">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+      );
+    case "compare":
+      return (
+        <div className="grid md:grid-cols-2 gap-5 my-10">
+          <div className="glass-flat p-6">
+            <div className="label-mono text-emerald mb-4">{section.left.title}</div>
+            <ul className="m-0 p-0 list-none">
+              {section.left.items.map((it, i) => (
+                <li key={i} className="text-sm text-muted py-1.5 pl-5 relative before:content-['→'] before:absolute before:left-0 before:text-emerald">
+                  {parseInlineLinks(it)}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="glass-flat p-6">
+            <div className="label-mono text-emerald mb-4">{section.right.title}</div>
+            <ul className="m-0 p-0 list-none">
+              {section.right.items.map((it, i) => (
+                <li key={i} className="text-sm text-muted py-1.5 pl-5 relative before:content-['→'] before:absolute before:left-0 before:text-emerald">
+                  {parseInlineLinks(it)}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      );
+    case "quote":
+      return (
+        <blockquote className="my-10 pl-6 border-l-4 border-emerald">
+          <p className="text-display text-xl md:text-2xl italic text-bone m-0 leading-relaxed">
+            « {section.text} »
+          </p>
+          {section.author && (
+            <div className="label-mono mt-4 text-[0.65rem]">— {section.author}</div>
+          )}
+        </blockquote>
+      );
+    case "cta":
+      return (
+        <div className="glass-flat p-8 my-10 text-center border border-emerald/30">
+          <h3 className="text-display text-2xl mb-3 m-0">{section.title}</h3>
+          <p className="text-muted mb-6 m-0">{parseInlineLinks(section.text)}</p>
+          <Link href={section.cta_href} className="btn btn-primary inline-flex">
+            {section.cta_label}
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M3.5 8H12.5M12.5 8L8 3.5M12.5 8L8 12.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </Link>
         </div>
       );
   }

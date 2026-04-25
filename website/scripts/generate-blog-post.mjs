@@ -62,7 +62,7 @@ const todayISO = new Date().toISOString().split("T")[0];
 
 const systemPrompt = `Tu es Marc-Alexandre Duval, fondateur de MAAD-AI — agence d'intelligence artificielle et de visibilité web pour PME du Québec.
 
-Tu rédiges un article de blog pour ton site maad-ai.com. Ton mandat : produire UN article qui respecte strictement le schema JSON fourni.
+Tu rédiges un article de blog pour ton site maad-ai.com. Ton mandat : produire UN article RICHE EN STRUCTURE, OPTIMISÉ SEO/AEO, avec des BACKLINKS INTERNES vers tes pages de services pour booster le maillage interne et faire convertir.
 
 # Voice et style (NON NÉGOCIABLE)
 - Français québécois, tutoiement systématique ("ta PME", "tes clients", "tu", "ton")
@@ -74,18 +74,29 @@ Tu rédiges un article de blog pour ton site maad-ai.com. Ton mandat : produire 
 - Encourageant mais honnête (jamais yes-man, jamais alarmiste)
 - Premier paragraphe = "dek" = réponse citation-ready de 50-80 mots, bold:true
 
-# Structure obligatoire
-1. Premier élément = paragraphe bold (le "dek" — citation-ready, 50-80 mots, répond directement à la question du titre)
-2. Paragraphe d'intro contextualisé (post-dek)
-3. Au moins 4 sections H2 (et max 7)
-4. Au moins UNE liste numérotée (kind: "ol" — étapes, méthode, processus)
-5. Au moins UNE liste à puces (kind: "ul" — exemples, items, checklist)
-6. Au moins UN tableau OU un callout (kind: "table" ou "callout")
-7. Callout final = takeaway / message clé en 1-2 phrases
+# 🎯 BACKLINKS INTERNES — CRITIQUE POUR SEO/AEO
+Tu DOIS intégrer **au moins 4 backlinks internes** dans le corps des paragraphes en utilisant la syntaxe Markdown : \`[texte d'ancre](/services/nom-service)\`.
+
+Exemples de phrasing avec backlink :
+- "Pour automatiser tout ça, on construit des [agents IA sur mesure](/services/agents-ia) qui s'occupent du processus complet."
+- "Notre offre [AEO](/services/aeo) traite exactement ce problème — on optimise ton contenu pour les moteurs de réponse."
+- "Si tu veux qu'on s'en occupe, [contacte-nous](/contact) pour une discussion de 20 min."
+
+Ces liens vont devenir cliquables sur le site (le renderer parse la syntaxe Markdown). Ils doivent paraître naturels, pas forcés.
+
+# 📋 STRUCTURE OBLIGATOIRE — RICHE ET VARIÉE
+1. **Premier élément** = paragraphe bold (le "dek" — citation-ready, 50-80 mots, répond directement à la question du titre)
+2. **Paragraphe d'intro** contextualisé (post-dek)
+3. **Au moins 6 sections H2** (max 8)
+4. **Au moins 2 tableaux** (kind: "table") — comparaisons, classifications, mappings
+5. **Au moins 1 stats block** (kind: "stats") — 3-4 chiffres clés avec gros affichage
+6. **Au moins 1 liste numérotée** (kind: "ol") — étapes, méthode
+7. **Au moins 1 liste à puces** (kind: "ul") — exemples, checklist
+8. **1 section CTA** (kind: "cta") AVANT le callout final — pousse vers /contact ou un service
+9. **Callout final** = takeaway en 1-2 phrases (avec backlink Markdown si pertinent)
 
 # Longueur cible
 - ${MIN_WORDS} à ${MAX_WORDS} mots total (cible : ${TARGET_WORDS} mots)
-- Compte le texte de tous les "text", "items[].t", "items[].d", "rows[][]", "headers[]"
 
 # Catégories valides
 "AEO/GEO" | "IA" | "SEO" | "Web Design"
@@ -99,26 +110,33 @@ Tu rédiges un article de blog pour ton site maad-ai.com. Ton mandat : produire 
   "dek": "réponse directe 50-80 mots — sera dans le premier paragraphe bold",
   "readTime": "X min",
   "related": ["/services/...", "..."],
-  "content": [
-    { "kind": "p", "bold": true, "text": "[le dek mot pour mot ici]" },
-    { "kind": "p", "text": "..." },
-    { "kind": "h2", "text": "..." },
-    ...
-  ]
+  "content": [...]
 }
 
-# Types Section autorisés
-- {"kind": "p", "text": "...", "bold": true|false (optional)}
-- {"kind": "h2", "text": "..."}
-- {"kind": "ul", "items": ["...", "...", "..."]}
-- {"kind": "ol", "items": [{"t": "Titre court", "d": "Description complète"}, ...]}
-- {"kind": "table", "headers": ["...", "..."], "rows": [["...", "..."], ...]}
-- {"kind": "callout", "text": "..."}
+# 🧱 Types Section autorisés (UTILISE LA VARIÉTÉ)
+- {"kind": "p", "text": "...", "bold": true|false (optional)} — markdown links OK : [label](/path)
+- {"kind": "h2", "text": "..."} — section principale
+- {"kind": "h3", "text": "..."} — sous-section dans une H2
+- {"kind": "ul", "items": ["...", "..."]} — items, exemples
+- {"kind": "ol", "items": [{"t": "Titre court", "d": "Description"}, ...]} — étapes numérotées
+- {"kind": "table", "headers": ["...", "..."], "rows": [["...", "..."]]} — comparaisons, mappings
+- {"kind": "callout", "text": "..."} — encadré accent emerald, pour mise en valeur
+- {"kind": "stats", "items": [{"value": "65 %", "label": "des recherches sont zero-click"}, ...]} — block 3-4 chiffres
+- {"kind": "compare", "left": {"title": "Avant", "items": ["...", "..."]}, "right": {"title": "Après", "items": ["...", "..."]}} — 2 colonnes
+- {"kind": "quote", "text": "...", "author": "..."} — citation impactante
+- {"kind": "cta", "title": "Tu veux qu'on s'en occupe ?", "text": "On bâtit ce genre de stratégie pour des PME francophones tous les jours.", "cta_label": "Parlons-en", "cta_href": "/contact"} — call-to-action
 
-# Slugs déjà publiés (NE PAS réutiliser ni dupliquer le sujet)
+# 📌 EXIGENCES SPÉCIFIQUES POUR SEO/AEO
+- **Premier paragraphe (dek)** : doit répondre à la question du titre en 50-80 mots, citation-ready, structuré pour featured snippets / AI Overviews
+- **H2 = questions naturelles** que tes prospects taperaient (ex: "Pourquoi l'AEO devient critique en 2026" mieux que "Importance de l'AEO")
+- **Stats block** = 3-4 chiffres précis avec source si possible — données vérifiables que les LLMs adorent citer
+- **CTA inline** = pousse vers une page service précise OU /contact
+- **Backlinks** = au moins 4 dans le corps via Markdown [texte](/services/...), pour booster ton maillage interne SEO
+
+# Slugs déjà publiés (NE PAS réutiliser ni couvrir le MÊME sujet — prends un angle franchement différent si proche)
 ${existingSlugs.map((s) => `- ${s}`).join("\n")}
 
-# Articles "related" — utilise UNIQUEMENT ces paths existants
+# Pages internes pour backlinks (utilise CES paths exclusivement)
 - /services/intelligence-artificielle
 - /services/agents-ia
 - /services/automatisation
@@ -129,13 +147,17 @@ ${existingSlugs.map((s) => `- ${s}`).join("\n")}
 - /services/aeo
 - /services/geo
 - /services/conception-web
+- /industries/b2b
+- /industries/saas
+- /industries/e-commerce
+- /industries/startup
 - /faq
 - /a-propos
 - /contact
-- /blog/[slug-existant]
+- /blog/[slug-existant-de-la-liste-ci-dessus]
 
 # Sortie
-Retourne UNIQUEMENT le JSON de l'article, rien d'autre. Pas de markdown, pas de \`\`\`json, pas de commentaires, pas de préambule.`;
+Retourne UNIQUEMENT le JSON de l'article, rien d'autre. Pas de markdown wrapper, pas de \`\`\`json, pas de commentaires, pas de préambule.`;
 
 const userPrompt = `Génère l'article suivant :
 
@@ -205,14 +227,40 @@ const wordCount = countWords(post);
 if (wordCount < MIN_WORDS) errors.push(`Too short: ${wordCount} words (min ${MIN_WORDS})`);
 if (wordCount > MAX_WORDS) errors.push(`Too long: ${wordCount} words (max ${MAX_WORDS})`);
 
-// Required section types
+// Validate all section kinds are recognized
+const VALID_KINDS = ["h2", "h3", "p", "ul", "ol", "table", "callout", "stats", "compare", "quote", "cta"];
 const kinds = post.content?.map((c) => c.kind) || [];
+const invalidKinds = kinds.filter((k) => !VALID_KINDS.includes(k));
+if (invalidKinds.length > 0) {
+  errors.push(`Invalid section kinds: ${[...new Set(invalidKinds)].join(", ")}`);
+}
+
+// Required section counts
 const h2Count = kinds.filter((k) => k === "h2").length;
-if (h2Count < 4) errors.push(`Need at least 4 H2 sections (got ${h2Count})`);
+const tableCount = kinds.filter((k) => k === "table").length;
+const statsCount = kinds.filter((k) => k === "stats").length;
+const ctaCount = kinds.filter((k) => k === "cta").length;
+const calloutCount = kinds.filter((k) => k === "callout").length;
+if (h2Count < 6) errors.push(`Need at least 6 H2 sections (got ${h2Count})`);
+if (tableCount < 2) errors.push(`Need at least 2 tables (got ${tableCount})`);
+if (statsCount < 1) errors.push(`Need at least 1 stats block (got ${statsCount})`);
+if (ctaCount < 1) errors.push(`Need at least 1 cta block (got ${ctaCount})`);
+if (calloutCount < 1) errors.push(`Need at least 1 callout (got ${calloutCount})`);
 if (!kinds.includes("ol")) errors.push(`Missing ol (numbered list)`);
 if (!kinds.includes("ul")) errors.push(`Missing ul (bullet list)`);
-if (!kinds.includes("callout") && !kinds.includes("table")) {
-  errors.push(`Need at least one callout or table`);
+
+// Internal backlinks count — count markdown-style links in p/ul/ol/callout/cta text
+const allTextParts = [];
+for (const section of post.content || []) {
+  if (section.kind === "p" || section.kind === "callout") allTextParts.push(section.text);
+  if (section.kind === "ul") allTextParts.push(...(section.items || []));
+  if (section.kind === "ol") allTextParts.push(...(section.items || []).map((i) => i.d));
+  if (section.kind === "cta") allTextParts.push(section.text);
+}
+const allBodyText = allTextParts.join(" ");
+const backlinkMatches = allBodyText.match(/\[([^\]]+)\]\((\/[^)]+)\)/g) || [];
+if (backlinkMatches.length < 4) {
+  errors.push(`Need at least 4 internal backlinks via Markdown [text](/path) (got ${backlinkMatches.length})`);
 }
 
 if (errors.length > 0) {
@@ -281,7 +329,7 @@ function countWords(post) {
   countText(post.excerpt);
   countText(post.dek);
   for (const section of post.content || []) {
-    if (section.kind === "p" || section.kind === "h2" || section.kind === "callout") {
+    if (section.kind === "p" || section.kind === "h2" || section.kind === "h3" || section.kind === "callout" || section.kind === "quote") {
       countText(section.text);
     } else if (section.kind === "ul") {
       (section.items || []).forEach(countText);
@@ -293,6 +341,20 @@ function countWords(post) {
     } else if (section.kind === "table") {
       (section.headers || []).forEach(countText);
       (section.rows || []).forEach((row) => row.forEach(countText));
+    } else if (section.kind === "stats") {
+      (section.items || []).forEach((s) => {
+        countText(s.value);
+        countText(s.label);
+      });
+    } else if (section.kind === "compare") {
+      countText(section.left?.title);
+      countText(section.right?.title);
+      (section.left?.items || []).forEach(countText);
+      (section.right?.items || []).forEach(countText);
+    } else if (section.kind === "cta") {
+      countText(section.title);
+      countText(section.text);
+      countText(section.cta_label);
     }
   }
   return words;
@@ -333,6 +395,9 @@ function serializeSection(section, baseIndent) {
   if (section.kind === "h2") {
     return `{ kind: "h2", text: ${JSON.stringify(section.text)} }`;
   }
+  if (section.kind === "h3") {
+    return `{ kind: "h3", text: ${JSON.stringify(section.text)} }`;
+  }
   if (section.kind === "ul") {
     const items = section.items.map((it) => `\n${i}${i}${JSON.stringify(it)}`).join(",");
     return `{\n${i}kind: "ul",\n${i}items: [${items},\n${i}],\n${baseIndent}}`;
@@ -352,6 +417,25 @@ function serializeSection(section, baseIndent) {
   }
   if (section.kind === "callout") {
     return `{ kind: "callout", text: ${JSON.stringify(section.text)} }`;
+  }
+  if (section.kind === "stats") {
+    const items = section.items
+      .map((s) => `\n${i}${i}{ value: ${JSON.stringify(s.value)}, label: ${JSON.stringify(s.label)} }`)
+      .join(",");
+    return `{\n${i}kind: "stats",\n${i}items: [${items},\n${i}],\n${baseIndent}}`;
+  }
+  if (section.kind === "compare") {
+    const leftItems = (section.left?.items || []).map((x) => `\n${i}${i}${i}${JSON.stringify(x)}`).join(",");
+    const rightItems = (section.right?.items || []).map((x) => `\n${i}${i}${i}${JSON.stringify(x)}`).join(",");
+    return `{\n${i}kind: "compare",\n${i}left: {\n${i}${i}title: ${JSON.stringify(section.left?.title || "")},\n${i}${i}items: [${leftItems},\n${i}${i}],\n${i}},\n${i}right: {\n${i}${i}title: ${JSON.stringify(section.right?.title || "")},\n${i}${i}items: [${rightItems},\n${i}${i}],\n${i}},\n${baseIndent}}`;
+  }
+  if (section.kind === "quote") {
+    const parts = [`kind: "quote"`, `text: ${JSON.stringify(section.text)}`];
+    if (section.author) parts.push(`author: ${JSON.stringify(section.author)}`);
+    return `{ ${parts.join(", ")} }`;
+  }
+  if (section.kind === "cta") {
+    return `{\n${i}kind: "cta",\n${i}title: ${JSON.stringify(section.title)},\n${i}text: ${JSON.stringify(section.text)},\n${i}cta_label: ${JSON.stringify(section.cta_label)},\n${i}cta_href: ${JSON.stringify(section.cta_href)},\n${baseIndent}}`;
   }
   throw new Error(`Unknown section kind: ${section.kind}`);
 }
