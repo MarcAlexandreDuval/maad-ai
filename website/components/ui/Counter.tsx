@@ -31,7 +31,17 @@ export function Counter({
     const el = ref.current;
     if (!el) return;
 
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    // Skip number-counting animation on:
+    //  - prefers-reduced-motion
+    //  - mobile viewport (< 768px) — too janky
+    //  - slow connection
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const isMobile = window.innerWidth < 768;
+    const conn = (navigator as { connection?: { effectiveType?: string } }).connection;
+    const slowConnection = conn?.effectiveType
+      ? ["slow-2g", "2g", "3g"].includes(conn.effectiveType)
+      : false;
+    if (reduced || isMobile || slowConnection) {
       setDisplay(value);
       return;
     }
