@@ -1,13 +1,20 @@
-import { SITE } from "./site";
+import { SITE, SOCIALS } from "./site";
 
 export const orgSchema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   name: SITE.name,
   url: SITE.url,
+  logo: `${SITE.url}/logo.png`,
+  image: `${SITE.url}/og-image.png`,
   description: SITE.description,
   email: SITE.email,
-  founder: { "@type": "Person", name: SITE.founder },
+  founder: {
+    "@type": "Person",
+    name: SITE.founder,
+    jobTitle: "Founder",
+    url: `${SITE.url}/a-propos`,
+  },
   address: {
     "@type": "PostalAddress",
     addressLocality: SITE.city,
@@ -15,7 +22,7 @@ export const orgSchema = {
     addressCountry: "CA",
   },
   areaServed: { "@type": "AdministrativeArea", name: `${SITE.region}, ${SITE.province}` },
-  sameAs: [],
+  sameAs: SOCIALS.map((s) => s.href),
 };
 
 export const websiteSchema = {
@@ -82,22 +89,36 @@ export function articleSchema({
   description,
   slug,
   datePublished,
+  dateModified,
 }: {
   title: string;
   description: string;
   slug: string;
   datePublished: string;
+  dateModified?: string;
 }) {
+  const url = `${SITE.url}/blog/${slug}`;
   return {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: title,
     description,
-    author: { "@type": "Person", name: SITE.founder },
-    publisher: { "@type": "Organization", name: SITE.name },
+    image: `${SITE.url}/og-image.png`,
+    author: {
+      "@type": "Person",
+      name: SITE.founder,
+      url: `${SITE.url}/a-propos`,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: SITE.name,
+      logo: { "@type": "ImageObject", url: `${SITE.url}/logo.png` },
+    },
     datePublished,
+    dateModified: dateModified ?? datePublished,
     inLanguage: "fr-CA",
-    url: `${SITE.url}/blog/${slug}`,
+    url,
+    mainEntityOfPage: { "@type": "WebPage", "@id": url },
   };
 }
 

@@ -23,6 +23,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/industries/e-commerce", priority: 0.7, changeFrequency: "monthly" },
     { path: "/industries/startup", priority: 0.7, changeFrequency: "monthly" },
     { path: "/industries/saas", priority: 0.7, changeFrequency: "monthly" },
+    { path: "/industries/personnalite-publique", priority: 0.7, changeFrequency: "monthly" },
+    { path: "/industries/immobilier", priority: 0.7, changeFrequency: "monthly" },
     { path: "/blog", priority: 0.8, changeFrequency: "weekly" },
     { path: "/a-propos", priority: 0.7, changeFrequency: "yearly" },
     { path: "/contact", priority: 0.8, changeFrequency: "yearly" },

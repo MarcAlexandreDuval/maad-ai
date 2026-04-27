@@ -20,6 +20,10 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     title: post.title,
     description: post.excerpt,
     path: `/blog/${post.slug}`,
+    article: {
+      publishedTime: post.datePublished,
+      section: post.category,
+    },
   });
 }
 
