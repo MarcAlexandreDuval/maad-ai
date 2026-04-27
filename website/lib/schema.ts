@@ -14,6 +14,7 @@ export const orgSchema = {
     name: SITE.founder,
     jobTitle: "Founder",
     url: `${SITE.url}/a-propos`,
+    sameAs: ["https://www.linkedin.com/in/marcalexandreduval"],
   },
   address: {
     "@type": "PostalAddress",
