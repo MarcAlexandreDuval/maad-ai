@@ -36,7 +36,9 @@
         "/services/aeo",
         "/services/seo"
       ],
-      "published": false
+      "published": true,
+      "publishedAt": "2026-04-27",
+      "publishedSlug": "aeo-vs-seo-7-differences-critiques-2026"
     },
     {
       "id": "003",
