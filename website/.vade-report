@@ -1,0 +1,77 @@
+# Vercel Speed Insights Installation Report
+
+## Summary
+Successfully installed and configured Vercel Speed Insights for the Next.js 14 project.
+
+## Changes Made
+
+### 1. Package Installation
+- **Installed**: `@vercel/speed-insights@^2.0.0`
+- **Package Manager**: npm (detected from existing package-lock.json)
+- **Command Used**: `npm install @vercel/speed-insights`
+
+### 2. Configuration
+- **File Modified**: `website/app/layout.tsx`
+- **Changes**:
+  - Added import: `import { SpeedInsights } from "@vercel/speed-insights/next";`
+  - Added `<SpeedInsights />` component to the root layout, placed after `<Analytics />` in the body
+
+### 3. Files Modified
+- `website/app/layout.tsx` - Added SpeedInsights import and component
+- `website/package.json` - Added @vercel/speed-insights dependency
+- `website/package-lock.json` - Updated with new package and its dependencies
+
+## Implementation Details
+
+### Framework-Specific Setup
+Following the official Vercel documentation (fetched from https://vercel.com/docs/speed-insights/quickstart), I identified this as a Next.js 14.2.15 project using the App Router. The documentation specifies:
+
+- For Next.js v13.5+: Import from `@vercel/speed-insights/next`
+- Add `<SpeedInsights />` component to the root layout
+
+This approach was implemented exactly as specified in the official docs.
+
+### Code Location
+The SpeedInsights component was added to the root layout file at `website/app/layout.tsx`, positioned alongside the existing Analytics component. This ensures Speed Insights will be active across all pages of the application.
+
+## Testing Results
+
+### Build Verification ✓
+- **Command**: `npm run build`
+- **Result**: Build completed successfully
+- **Output**: All 35 static pages generated without errors
+- **Build Status**: ✓ Compiled successfully
+
+### Linter Check
+- **Status**: ESLint not yet configured for this project (optional setup)
+- **Impact**: No linting errors to check
+
+### Tests
+- **Status**: No test script defined in package.json
+- **Impact**: No tests to verify
+
+## Next Steps
+
+To complete the Speed Insights setup:
+
+1. **Enable Speed Insights in Vercel Dashboard**:
+   - Navigate to your project in the Vercel dashboard
+   - Select "Speed Insights" from the sidebar
+   - Click the "Enable" button
+
+2. **Deploy the Changes**:
+   - Push this branch and merge the PR
+   - Vercel will automatically deploy the changes
+
+3. **View Performance Data**:
+   - After deployment and user visits, access Speed Insights in your Vercel dashboard
+   - Monitor Core Web Vitals and performance metrics
+
+## Notes
+
+- The implementation follows the official Vercel documentation exactly
+- Speed Insights component placement matches the existing Analytics component pattern
+- The package version installed (^2.0.0) is the latest stable version
+- Lock file was properly updated with all dependencies
+- Build completed successfully with no errors
+- The component will automatically start collecting performance data once enabled in the Vercel dashboard and deployed
