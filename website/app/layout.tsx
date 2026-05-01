@@ -77,6 +77,13 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang={SITE.language} className={`${display.variable} ${body.variable} ${mono.variable}`}>
+      <head>
+        {/* Preconnect to Mux (HLS video CDN) — saves ~100-300ms on first chunk fetch */}
+        <link rel="preconnect" href="https://stream.mux.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://stream.mux.com" />
+        {/* Preconnect Vercel Analytics endpoint */}
+        <link rel="dns-prefetch" href="https://vitals.vercel-insights.com" />
+      </head>
       <body className="bg-tech min-h-screen flex flex-col">
         <JsonLd data={[orgSchema, websiteSchema]} />
         <Nav />

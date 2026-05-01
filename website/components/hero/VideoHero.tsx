@@ -81,7 +81,9 @@ export function VideoHero() {
 
   return (
     <section className="hero-root relative overflow-hidden -mt-24 md:-mt-28 min-h-[100svh] flex items-center">
-      {/* Background video — desktop + fast connections only */}
+      {/* Background video — desktop + fast connections only.
+         preload="metadata" frees bandwidth for the LCP text/CSS;
+         video starts buffering after first paint. */}
       {hydrated && !skipHeavy && (
         <video
           ref={bgVideoRef}
@@ -90,7 +92,7 @@ export function VideoHero() {
           muted
           playsInline
           loop
-          preload="auto"
+          preload="metadata"
           aria-hidden="true"
         />
       )}
@@ -132,7 +134,7 @@ export function VideoHero() {
             </p>
           </div>
 
-          <p className="hero-subtitle text-lg text-muted min-h-[5rem] md:min-h-[6.5rem]">
+          <p className="hero-subtitle text-lg text-muted min-h-[6.5rem] md:min-h-[6.5rem]">
             <Typewriter
               active={titleDone}
               startDelay={skipHeavy ? 0 : 300}
