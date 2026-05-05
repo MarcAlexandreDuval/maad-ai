@@ -6,7 +6,7 @@ import { SITE } from "@/lib/site";
 export const metadata = buildMetadata({
   title: "Politique de confidentialité",
   description:
-    "Comment MAAD-AI collecte, utilise et protège tes données personnelles. Conforme à la Loi 25 du Québec.",
+    "Comment MAAD-AI collecte, utilise et protège tes données personnelles. Conforme à la Loi 25 du Québec. Tes droits d'accès, rectification, suppression.",
   path: "/privacy",
 });
 

@@ -6,7 +6,7 @@ import { SITE } from "@/lib/site";
 export const metadata = buildMetadata({
   title: "Conditions d'utilisation",
   description:
-    "Conditions d'utilisation du site MAAD-AI et des services offerts par MAAD-AI au Québec.",
+    "Conditions d'utilisation du site MAAD-AI et des services IA, SEO, AEO et GEO offerts au Québec. Mandats, propriété, responsabilité, droit applicable.",
   path: "/terms",
 });
 

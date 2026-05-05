@@ -19,6 +19,15 @@ type PageMeta = {
 export function buildMetadata({ title, description, path, article }: PageMeta): Metadata {
   const url = `${SITE.url}${path}`;
   const ogTitle = `${title} | ${SITE.name}`;
+  const ogImage = `${SITE.url}/og-image.png`;
+  const ogImages = [
+    {
+      url: ogImage,
+      width: 1200,
+      height: 630,
+      alt: ogTitle,
+    },
+  ];
 
   const openGraph: Metadata["openGraph"] = article
     ? {
@@ -32,6 +41,7 @@ export function buildMetadata({ title, description, path, article }: PageMeta): 
         modifiedTime: article.modifiedTime ?? article.publishedTime,
         authors: article.authors ?? [SITE.founder],
         section: article.section,
+        images: ogImages,
       }
     : {
         title: ogTitle,
@@ -40,6 +50,7 @@ export function buildMetadata({ title, description, path, article }: PageMeta): 
         siteName: SITE.name,
         locale: SITE.locale,
         type: "website",
+        images: ogImages,
       };
 
   return {
@@ -51,6 +62,7 @@ export function buildMetadata({ title, description, path, article }: PageMeta): 
       card: "summary_large_image",
       title: ogTitle,
       description,
+      images: [ogImage],
     },
     robots: { index: true, follow: true },
   };

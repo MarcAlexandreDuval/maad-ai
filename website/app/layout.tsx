@@ -85,9 +85,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="dns-prefetch" href="https://vitals.vercel-insights.com" />
       </head>
       <body className="bg-tech min-h-screen flex flex-col">
+        {/* Skip nav link for accessibility — keyboard users can jump directly to main content */}
+        <a
+          href="#main"
+          className="absolute left-4 top-4 z-[100] -translate-y-20 rounded bg-emerald px-4 py-2 text-ink font-semibold focus:translate-y-0 transition-transform"
+        >
+          Aller au contenu principal
+        </a>
         <JsonLd data={[orgSchema, websiteSchema]} />
         <Nav />
-        <main className="flex-1 pt-24 md:pt-28">{children}</main>
+        <main id="main" className="flex-1 pt-24 md:pt-28">{children}</main>
         <Footer />
         <Analytics />
         <SpeedInsights />
