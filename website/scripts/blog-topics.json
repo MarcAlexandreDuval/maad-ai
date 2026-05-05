@@ -54,7 +54,9 @@
         "/services/aeo",
         "/services/seo"
       ],
-      "published": false
+      "published": true,
+      "publishedAt": "2026-05-05",
+      "publishedSlug": "ecrire-reponse-citation-ready-featured-snippets"
     },
     {
       "id": "004",
