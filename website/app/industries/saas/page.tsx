@@ -2,7 +2,7 @@ import { IndustryTemplate } from "@/components/ui/IndustryTemplate";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata = buildMetadata({
-  title: "SEO SaaS Québec — AEO & GEO pour éditeurs logiciels",
+  title: "SEO SaaS Québec — AEO + GEO",
   description:
     "SEO, AEO et GEO pour SaaS québécois. SEO de fonctionnalités, être cité par ChatGPT, chatbot onboarding. Stack moderne pour scaler.",
   path: "/industries/saas",

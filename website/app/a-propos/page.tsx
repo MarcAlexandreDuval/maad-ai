@@ -13,7 +13,7 @@ import { SITE } from "@/lib/site";
 export const metadata = buildMetadata({
   title: "À propos — MAAD-AI, agence IA au Québec",
   description:
-    "MAAD-AI est une agence d'intelligence artificielle au Québec. Fondée par Marc-Alexandre Duval pour rendre l'IA, l'AEO et le GEO accessibles aux PME québécoises.",
+    "MAAD-AI est une agence IA au Québec. Fondée par Marc-Alexandre Duval pour rendre l'IA, l'AEO et le GEO accessibles aux PME québécoises.",
   path: "/a-propos",
 });
 

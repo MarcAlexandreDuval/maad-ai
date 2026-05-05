@@ -15,9 +15,9 @@ import { buildMetadata } from "@/lib/metadata";
 import { serviceSchema, faqSchema } from "@/lib/schema";
 
 export const metadata = buildMetadata({
-  title: "SEO Québec — Référencement Google pour PME québécoises",
+  title: "SEO Québec — Référencement Google PME",
   description:
-    "Agence SEO au Québec : référencement technique, contenu et autorité pour PME partout dans la province. Base solide pour l'AEO et le GEO. Bureaux à Joliette, service à distance partout au QC.",
+    "Agence SEO au Québec : référencement technique, contenu, autorité. Base pour AEO + GEO. Service partout au QC depuis Joliette.",
   path: "/services/seo",
 });
 

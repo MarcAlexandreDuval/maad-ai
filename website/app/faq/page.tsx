@@ -7,7 +7,7 @@ import { faqSchema } from "@/lib/schema";
 import Link from "next/link";
 
 export const metadata = buildMetadata({
-  title: "FAQ — Questions fréquentes sur l'IA, l'AEO et le GEO",
+  title: "FAQ — IA, AEO, GEO pour PME du Québec",
   description:
     "Réponses directes aux questions fréquentes sur les agents IA, chatbots, SEO, AEO, GEO et la visibilité web pour PME québécoises.",
   path: "/faq",
@@ -101,6 +101,9 @@ export default function FAQPage() {
 
       <SectionWrapper>
         <div className="max-w-4xl flex flex-col gap-8">
+          <h2 className="text-display text-3xl md:text-4xl mb-2">
+            Questions fréquentes sur l&apos;IA, l&apos;AEO et le GEO
+          </h2>
           {faqs.map((f, i) => (
             <div key={i} className="glass p-7 md:p-8">
               <div className="label-mono text-emerald mb-3">

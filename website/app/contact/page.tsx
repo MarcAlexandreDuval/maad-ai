@@ -98,6 +98,71 @@ export default function ContactPage() {
           </GlassCard>
         </div>
       </SectionWrapper>
+
+      <SectionWrapper>
+        <div className="max-w-4xl mx-auto flex flex-col gap-8">
+          <div>
+            <div className="label-mono text-emerald mb-3">À quoi t&apos;attendre</div>
+            <h2 className="text-display text-3xl md:text-4xl mb-5">
+              Un audit gratuit. Pas un pitch.
+            </h2>
+            <p className="text-muted leading-relaxed text-lg">
+              Quand tu nous écris, voici ce qui se passe. On lit ton message dans la journée.
+              Si ton contexte fit avec ce qu&apos;on fait — visibilité IA (AEO/GEO),
+              SEO, agents IA, automatisation, refonte de site web pour PME du Québec —
+              on te répond avec un audit gratuit de 15 minutes. Si ça fit pas, on te dit
+              honnêtement pourquoi et on t&apos;oriente vers quelqu&apos;un qui peut aider.
+              Pas de relances commerciales, pas de blabla.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <GlassCard>
+              <div className="label-mono text-emerald mb-3">Audit AEO / GEO</div>
+              <h3 className="text-display text-xl mb-3">
+                Es-tu visible sur ChatGPT et Perplexity ?
+              </h3>
+              <p className="text-sm text-muted">
+                On teste tes requêtes cibles, on identifie où ton entreprise apparaît
+                (ou pas) dans les réponses des moteurs IA, on te donne 3 fix prioritaires.
+              </p>
+            </GlassCard>
+
+            <GlassCard>
+              <div className="label-mono text-emerald mb-3">Refonte web</div>
+              <h3 className="text-display text-xl mb-3">
+                Site Next.js codé main, AEO-ready
+              </h3>
+              <p className="text-sm text-muted">
+                Sites construits avec Claude Code, schémas JSON-LD complets, Core Web
+                Vitals top 10 %, structure pour être cité par les LLMs dès le jour 1.
+              </p>
+            </GlassCard>
+
+            <GlassCard>
+              <div className="label-mono text-emerald mb-3">Agents IA</div>
+              <h3 className="text-display text-xl mb-3">
+                Des assistants qui font ton job
+              </h3>
+              <p className="text-sm text-muted">
+                Prospection, qualification de leads, support client, génération de
+                contenu — agents IA sur mesure connectés à tes données réelles.
+              </p>
+            </GlassCard>
+
+            <GlassCard>
+              <div className="label-mono text-emerald mb-3">Automatisation</div>
+              <h3 className="text-display text-xl mb-3">
+                Workflows qui récupèrent 10h+ par semaine
+              </h3>
+              <p className="text-sm text-muted">
+                n8n, Make, Zapier — workflows no-code/low-code qui éliminent les tâches
+                répétitives. Connectés à tes outils existants (CRM, courriel, Slack).
+              </p>
+            </GlassCard>
+          </div>
+        </div>
+      </SectionWrapper>
     </>
   );
 }

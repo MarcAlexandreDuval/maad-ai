@@ -2,9 +2,9 @@ import { IndustryTemplate } from "@/components/ui/IndustryTemplate";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata = buildMetadata({
-  title: "IA pour courtiers et agences immobilières au Québec",
+  title: "IA pour courtiers immobiliers Québec",
   description:
-    "Solutions IA et visibilité web pour courtiers immobiliers et agences au Québec. SEO local, chatbot de pré-qualification, automatisation de suivis.",
+    "IA et visibilité web pour courtiers et agences immobilières au Québec. SEO local, chatbot de pré-qualification, automatisation de suivis.",
   path: "/industries/immobilier",
 });
 

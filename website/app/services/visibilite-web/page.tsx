@@ -16,9 +16,9 @@ import { serviceSchema, faqSchema } from "@/lib/schema";
 import Link from "next/link";
 
 export const metadata = buildMetadata({
-  title: "Visibilité Web — SEO, SEO Local, AEO, GEO, Conception",
+  title: "Visibilité Web Québec — SEO + AEO + GEO",
   description:
-    "MAAD-AI combine SEO, AEO et GEO pour rendre ta PME québécoise visible dans Google, les AI Overviews, ChatGPT et Perplexity. Approche intégrée.",
+    "SEO, AEO et GEO combinés pour rendre ta PME québécoise visible sur Google, AI Overviews, ChatGPT et Perplexity. Approche intégrée.",
   path: "/services/visibilite-web",
 });
 

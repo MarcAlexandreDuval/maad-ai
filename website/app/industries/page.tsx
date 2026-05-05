@@ -7,7 +7,7 @@ import { IndustriesOverviewContent } from "@/components/ui/IndustriesOverviewCon
 export const metadata = buildMetadata({
   title: "Industries — Solutions IA par secteur",
   description:
-    "Solutions IA, SEO et visibilité web pour B2B, e-commerce, startups, SaaS, personnalités publiques et immobilier au Québec. Cas d'usage adaptés à chaque industrie.",
+    "IA, SEO et visibilité web pour B2B, e-commerce, startups, SaaS, créateurs et immobilier au Québec. Cas d'usage adaptés par secteur.",
   path: "/industries",
 });
 

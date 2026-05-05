@@ -2,9 +2,9 @@ import { IndustryTemplate } from "@/components/ui/IndustryTemplate";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata = buildMetadata({
-  title: "IA pour personnalités publiques et créateurs au Québec",
+  title: "IA pour créateurs et personnalités Québec",
   description:
-    "Solutions IA et visibilité web pour personnalités publiques, créateurs de contenu et influenceurs au Québec. Image de marque, automatisation, SEO personnel.",
+    "IA et visibilité web pour personnalités publiques, créateurs et influenceurs au Québec. Image de marque, automatisation, SEO personnel.",
   path: "/industries/personnalite-publique",
 });
 

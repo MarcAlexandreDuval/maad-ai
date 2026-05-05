@@ -27,7 +27,7 @@ export const POSTS: Post[] = [
   {
     slug: "ecrire-reponse-citation-ready-featured-snippets",
     category: "AEO/GEO",
-    title: "Comment écrire une réponse citation-ready pour les featured snippets",
+    title: "Réponses citation-ready pour featured snippets",
     excerpt: "Une structure en 5 étapes pour transformer tes réponses en citations que Google, ChatGPT et Perplexity adorent afficher en position zéro.",
     dek: "Une réponse citation-ready, c'est un bloc de 50 à 80 mots qui répond directement à une question précise, sans fluff, avec une structure claire que les moteurs peuvent extraire et afficher tel quel en featured snippet. C'est la base de toute stratégie [AEO](/services/aeo) efficace — et ça augmente tes chances d'apparaître en position zéro de 3,7× selon une étude Ahrefs 2024.",
     datePublished: "2026-05-05",
@@ -355,7 +355,7 @@ export const POSTS: Post[] = [
   {
     slug: "guide-aeo-pme-quebec",
     category: "AEO/GEO",
-    title: "C'est quoi l'AEO — Guide complet pour les PME du Québec",
+    title: "Guide AEO pour PME du Québec",
     excerpt:
       "L'Answer Engine Optimization expliqué simplement : pourquoi ta PME doit s'y mettre, comment ça fonctionne, et ce que tu dois changer dès maintenant.",
     dek: "L'AEO (Answer Engine Optimization) est l'optimisation de contenu pour devenir la réponse directe affichée par Google et les moteurs de réponse — featured snippets, AI Overviews, People Also Ask. Contrairement au SEO classique qui vise le clic, l'AEO vise à devenir la réponse elle-même.",
@@ -441,7 +441,7 @@ export const POSTS: Post[] = [
   {
     slug: "apparaitre-dans-chatgpt-perplexity-2026",
     category: "AEO/GEO",
-    title: "Comment apparaître dans ChatGPT et Perplexity en 2026",
+    title: "Apparaître dans ChatGPT et Perplexity en 2026",
     excerpt:
       "Étapes actionnables pour être cité par les IA génératives. Pas de théorie — ce qu'on applique sur nos propres clients.",
     dek: "Apparaître dans ChatGPT et Perplexity demande trois leviers en parallèle : être mentionné dans des sources que les LLMs utilisent (Wikipedia, Reddit, presse), structurer ton site avec des données citation-ready (schema, llms.txt, définitions claires), et publier un contenu factuel que les IA préfèrent aux opinions.",
@@ -504,7 +504,7 @@ export const POSTS: Post[] = [
   {
     slug: "agent-ia-vs-chatbot-difference",
     category: "IA",
-    title: "Agent IA vs Chatbot — C'est quoi la vraie différence ?",
+    title: "Agent IA vs Chatbot — Différences en 2026",
     excerpt:
       "Tout le monde confond agent IA et chatbot. Ce sont deux bêtes complètement différentes. Voici comment les distinguer — et lequel tu as vraiment besoin.",
     dek: "Un chatbot répond à des questions en suivant un script ou un LLM. Un agent IA exécute des tâches complètes : il lit, analyse, décide et agit dans plusieurs systèmes. Un chatbot cause. Un agent livre un résultat.",
@@ -568,7 +568,7 @@ export const POSTS: Post[] = [
   {
     slug: "5-processus-automatiser-pme-ia",
     category: "IA",
-    title: "5 processus que chaque PME devrait automatiser avec l'IA",
+    title: "5 processus à automatiser avec l'IA en 2026",
     excerpt:
       "Les automatisations qui donnent le plus de ROI quand tu commences. Concrètes, mesurables, déployables en semaines — pas en trimestres.",
     dek: "Les cinq processus à automatiser en priorité dans une PME sont : la qualification de leads, le tri et réponse aux courriels, la génération de rapports hebdomadaires, l'onboarding client, et la gestion des factures et relances. Ces cinq processus combinés récupèrent 8 à 15 heures par semaine.",

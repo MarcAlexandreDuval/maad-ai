@@ -6,7 +6,7 @@ import { IAOverviewContent } from "@/components/ui/IAOverviewContent";
 export const metadata = buildMetadata({
   title: "Services IA — Agents, Automatisation, Chatbots",
   description:
-    "MAAD-AI offre des agents IA, de l'automatisation de workflows et des chatbots intelligents pour PME du Québec. Trois leviers, un seul objectif : que ton entreprise opère pendant que tu dors.",
+    "Agents IA, automatisation de workflows et chatbots intelligents pour PME du Québec. Que ton entreprise opère pendant que tu dors.",
   path: "/services/intelligence-artificielle",
 });
 

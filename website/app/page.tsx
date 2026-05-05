@@ -29,7 +29,8 @@ import { buildMetadata } from "@/lib/metadata";
 
 export const metadata = buildMetadata({
   title: `${SITE.name} — Agence IA, SEO, AEO & GEO au Québec`,
-  description: SITE.description,
+  description:
+    "Agence IA pour PME du Québec : agents IA, automatisation, chatbots, SEO, AEO et GEO. Sois recommandé par ChatGPT, Perplexity et Google.",
   path: "/",
 });
 
