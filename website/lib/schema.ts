@@ -22,7 +22,10 @@ export const orgSchema = {
     addressRegion: SITE.province,
     addressCountry: "CA",
   },
-  areaServed: { "@type": "AdministrativeArea", name: `${SITE.region}, ${SITE.province}` },
+  areaServed: [
+    { "@type": "AdministrativeArea", name: "Québec" },
+    { "@type": "Country", name: "Canada" },
+  ],
   sameAs: SOCIALS.map((s) => s.href),
 };
 

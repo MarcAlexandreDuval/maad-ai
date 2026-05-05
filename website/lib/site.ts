@@ -12,7 +12,7 @@ export const SITE = {
   tagline: "Tu es vu. Tu es choisi. Tu es recommandé.",
   ga4: "G-BJ57QZ92KX",
   description:
-    "MAAD-AI est une agence d'intelligence artificielle basée à Joliette, Québec, spécialisée en agents IA, automatisation, chatbots, SEO, AEO et GEO pour les PME du Québec. Fondée par Marc-Alexandre Duval.",
+    "MAAD-AI est une agence d'intelligence artificielle pour les PME du Québec : agents IA, automatisation, chatbots, SEO, AEO et GEO. On travaille à distance partout dans la province depuis nos bureaux à Joliette. Fondée par Marc-Alexandre Duval.",
 };
 
 export const NAV = {

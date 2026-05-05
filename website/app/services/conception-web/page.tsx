@@ -11,9 +11,9 @@ import { buildMetadata } from "@/lib/metadata";
 import { serviceSchema, faqSchema } from "@/lib/schema";
 
 export const metadata = buildMetadata({
-  title: "Conception Site Web Joliette — Sites rapides & SEO-ready",
+  title: "Conception Site Web Québec — Sites rapides AEO/GEO ready",
   description:
-    "Conception de sites web à Joliette et dans Lanaudière. Codés main, rapides, SEO-ready, AEO et GEO intégrés dès la conception. Pas de templates.",
+    "Conception de sites web pour PME québécoises : codés main avec Claude Code, rapides, SEO + AEO + GEO intégrés dès la conception. Pas de templates. Service partout au Québec depuis Joliette.",
   path: "/services/conception-web",
 });
 

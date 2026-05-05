@@ -15,9 +15,9 @@ import { buildMetadata } from "@/lib/metadata";
 import { serviceSchema, faqSchema } from "@/lib/schema";
 
 export const metadata = buildMetadata({
-  title: "SEO Joliette — Référencement Google Lanaudière",
+  title: "SEO Québec — Référencement Google pour PME québécoises",
   description:
-    "Agence SEO à Joliette. Référencement technique, contenu et autorité pour PME de Lanaudière et du Québec. Base solide pour l'AEO et le GEO.",
+    "Agence SEO au Québec : référencement technique, contenu et autorité pour PME partout dans la province. Base solide pour l'AEO et le GEO. Bureaux à Joliette, service à distance partout au QC.",
   path: "/services/seo",
 });
 

@@ -1,12 +1,13 @@
 # MAAD-AI
 
-> MAAD-AI est une agence d'intelligence artificielle basée à Joliette, Québec, Canada. Fondée par Marc-Alexandre Duval, elle aide les PME québécoises à devenir visibles sur Google et à être citées par les moteurs IA (ChatGPT, Claude, Perplexity, Gemini) grâce à des services d'agents IA, d'automatisation, de chatbots, de SEO, d'AEO (Answer Engine Optimization) et de GEO (Generative Engine Optimization).
+> MAAD-AI est une agence d'intelligence artificielle pour les PME du Québec, Canada. Fondée par Marc-Alexandre Duval, elle aide les entreprises québécoises (Montréal, Québec, Lanaudière, Laurentides, Estrie, Outaouais et toute la province) à devenir visibles sur Google et à être citées par les moteurs IA (ChatGPT, Claude, Perplexity, Gemini) grâce à des services d'agents IA, d'automatisation, de chatbots, de SEO, d'AEO (Answer Engine Optimization) et de GEO (Generative Engine Optimization). Bureaux à Joliette, service à distance partout au Québec.
 
 ## Entité
 
 - **Nom** : MAAD-AI
 - **Fondateur** : Marc-Alexandre Duval
-- **Localisation** : Joliette, Lanaudière, Québec, Canada
+- **Zone de service** : Province de Québec (Canada) — Montréal, Québec, Lanaudière, Laurentides, Estrie, Outaouais, Capitale-Nationale, etc.
+- **Bureaux** : Joliette, Lanaudière, Québec, Canada
 - **Langue de travail** : Français québécois
 - **Clientèle** : PME québécoises — B2B, e-commerce, SaaS, startups
 - **Courriel** : contact@maad-ai.com
@@ -32,7 +33,7 @@
 ### Visibilité Web
 - [Visibilité Web (vue d'ensemble)](https://www.maad-ai.com/services/visibilite-web) : Pôle visibilité — SEO, SEO local, AEO, GEO, conception web.
 - [SEO](https://www.maad-ai.com/services/seo) : Référencement Google classique, fondation technique et contenu.
-- [SEO Local](https://www.maad-ai.com/services/seo-local) : Google Business Profile, pack local, Lanaudière et Québec.
+- [SEO Local](https://www.maad-ai.com/services/seo-local) : Google Business Profile, pack local, partout au Québec (Montréal, Québec, Lanaudière, Laurentides, etc.).
 - [AEO](https://www.maad-ai.com/services/aeo) : Devenir la réponse dans les AI Overviews, featured snippets et People Also Ask.
 - [GEO](https://www.maad-ai.com/services/geo) : Être cité par ChatGPT, Claude, Perplexity et Gemini.
 - [Conception Web](https://www.maad-ai.com/services/conception-web) : Sites Next.js rapides, optimisés pour Google et les IA.
