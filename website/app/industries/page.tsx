@@ -1,6 +1,6 @@
 import { JsonLd } from "@/components/seo/JsonLd";
 import { buildMetadata } from "@/lib/metadata";
-import { INDUSTRIES } from "@/lib/site";
+import { INDUSTRIES, SITE } from "@/lib/site";
 import { breadcrumbSchema } from "@/lib/schema";
 import { IndustriesOverviewContent } from "@/components/ui/IndustriesOverviewContent";
 
@@ -23,7 +23,7 @@ export default function IndustriesPage() {
               "@type": "ListItem",
               position: i + 1,
               name: ind.label,
-              url: `https://maad-ai.com${ind.href}`,
+              url: `${SITE.url}${ind.href}`,
             })),
           },
           breadcrumbSchema([

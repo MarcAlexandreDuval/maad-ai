@@ -25,6 +25,13 @@ import {
 import { JsonLd } from "@/components/seo/JsonLd";
 import { faqSchema } from "@/lib/schema";
 import { SITE } from "@/lib/site";
+import { buildMetadata } from "@/lib/metadata";
+
+export const metadata = buildMetadata({
+  title: `${SITE.name} — Agence IA, SEO, AEO & GEO au Québec`,
+  description: SITE.description,
+  path: "/",
+});
 
 const faqs: { q: string; a: React.ReactNode; aText: string }[] = [
   {

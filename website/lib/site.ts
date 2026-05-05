@@ -1,6 +1,6 @@
 export const SITE = {
   name: "MAAD-AI",
-  url: "https://maad-ai.com",
+  url: "https://www.maad-ai.com",
   locale: "fr_CA",
   language: "fr-CA",
   founder: "Marc-Alexandre Duval",
