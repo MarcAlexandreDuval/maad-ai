@@ -11,9 +11,9 @@ import { buildMetadata } from "@/lib/metadata";
 import { serviceSchema, faqSchema } from "@/lib/schema";
 
 export const metadata = buildMetadata({
-  title: "SEO Local Joliette — Google Maps & Pack Local",
+  title: "SEO Local Québec — Google Maps + Pack Local Joliette",
   description:
-    "Agence SEO local à Joliette. Google Business Profile, pack local, avis, citations. Apparais dans Google Maps pour Joliette, Repentigny, Terrebonne.",
+    "Agence SEO local au Québec : Google Business Profile optimisé, pack local, avis, citations NAP. Apparais dans Google Maps pour Joliette, Montréal, Lanaudière et toute la province.",
   path: "/services/seo-local",
 });
 
