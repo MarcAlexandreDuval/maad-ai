@@ -17,6 +17,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/services/seo-local", priority: 0.9, changeFrequency: "monthly" },
     { path: "/services/aeo", priority: 0.95, changeFrequency: "monthly" },
     { path: "/services/geo", priority: 0.95, changeFrequency: "monthly" },
+    { path: "/agence-aeo-quebec", priority: 0.95, changeFrequency: "monthly" },
+    { path: "/agence-geo-montreal", priority: 0.95, changeFrequency: "monthly" },
     { path: "/services/conception-web", priority: 0.8, changeFrequency: "monthly" },
     { path: "/industries", priority: 0.8, changeFrequency: "monthly" },
     { path: "/industries/b2b", priority: 0.7, changeFrequency: "monthly" },
