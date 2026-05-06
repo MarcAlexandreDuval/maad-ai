@@ -47,6 +47,18 @@ export function Footer() {
               >
                 Visibilité
               </Link>
+              <Link
+                href="/agence-aeo-quebec"
+                className="hover:text-emerald transition-colors whitespace-nowrap"
+              >
+                Agence AEO Québec
+              </Link>
+              <Link
+                href="/agence-geo-montreal"
+                className="hover:text-emerald transition-colors whitespace-nowrap"
+              >
+                Agence GEO Montréal
+              </Link>
             </div>
 
             <div className="flex flex-col items-center lg:items-start gap-3">
