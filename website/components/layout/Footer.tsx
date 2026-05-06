@@ -32,7 +32,7 @@ export function Footer() {
           </div>
 
           {/* Nav columns — centered on mobile, left on desktop */}
-          <nav className="w-full lg:w-auto grid grid-cols-3 gap-x-6 sm:gap-x-10 gap-y-8 label-mono text-[0.68rem] text-center lg:text-left">
+          <nav className="w-full lg:w-auto grid grid-cols-2 sm:grid-cols-4 gap-x-6 sm:gap-x-10 gap-y-8 label-mono text-[0.68rem] text-center lg:text-left">
             <div className="flex flex-col items-center lg:items-start gap-3">
               <div className="text-emerald opacity-80 mb-1">Services</div>
               <Link
@@ -47,17 +47,21 @@ export function Footer() {
               >
                 Visibilité
               </Link>
+            </div>
+
+            <div className="flex flex-col items-center lg:items-start gap-3">
+              <div className="text-emerald opacity-80 mb-1">Régions</div>
               <Link
                 href="/agence-aeo-quebec"
                 className="hover:text-emerald transition-colors whitespace-nowrap"
               >
-                Agence AEO Québec
+                AEO Québec
               </Link>
               <Link
                 href="/agence-geo-montreal"
                 className="hover:text-emerald transition-colors whitespace-nowrap"
               >
-                Agence GEO Montréal
+                GEO Montréal
               </Link>
             </div>
 
