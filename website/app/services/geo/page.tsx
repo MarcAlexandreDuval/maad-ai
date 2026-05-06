@@ -36,7 +36,7 @@ const faqs = [
   },
   {
     q: "Combien de temps pour voir des résultats GEO ?",
-    a: "3 à 9 mois généralement. Les LLMs mettent à jour leurs données d'entraînement par cycles, et Perplexity/ChatGPT Search indexent en continu. Les premiers signaux apparaissent vite ; l'autorité réelle prend du temps.",
+    a: "3 à 9 mois généralement. Les LLMs mettent à jour leurs données d'entraînement par cycles, et Perplexity/ChatGPT Search indexent en continu. Les premiers signaux apparaissent vite ; l'autorité réelle prend du temps. Pour les PME du Grand Montréal spécifiquement, voir notre page dédiée [Agence GEO Montréal](/agence-geo-montreal).",
   },
 ];
 

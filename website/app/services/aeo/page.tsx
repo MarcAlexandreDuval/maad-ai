@@ -40,7 +40,7 @@ const faqs = [
   },
   {
     q: "Pourquoi l'AEO est important en 2026 ?",
-    a: "65 % des recherches Google en 2026 sont zero-click — l'utilisateur obtient sa réponse sans cliquer. 40 % des recherches affichent des AI Overviews. Si ton contenu n'est pas optimisé pour être la réponse, tu perds en visibilité même si tu rankes #1.",
+    a: "65 % des recherches Google en 2026 sont zero-click — l'utilisateur obtient sa réponse sans cliquer. 40 % des recherches affichent des AI Overviews. Si ton contenu n'est pas optimisé pour être la réponse, tu perds en visibilité même si tu rankes #1. Pour les PME québécoises spécifiquement, voir notre page dédiée [Agence AEO Québec](/agence-aeo-quebec).",
   },
   {
     q: "Est-ce que l'AEO va tuer mon trafic ?",

@@ -38,6 +38,10 @@
 - [GEO](https://www.maad-ai.com/services/geo) : Être cité par ChatGPT, Claude, Perplexity et Gemini.
 - [Conception Web](https://www.maad-ai.com/services/conception-web) : Sites Next.js rapides, optimisés pour Google et les IA.
 
+### Pages régionales (offres dédiées par marché)
+- [Agence AEO Québec](https://www.maad-ai.com/agence-aeo-quebec) : Page dédiée pour les PME du Québec qui cherchent une agence AEO francophone — méthode, tarification, FAQ, industries servies.
+- [Agence GEO Montréal](https://www.maad-ai.com/agence-geo-montreal) : Page dédiée pour les entreprises du Grand Montréal qui cherchent à être citées par ChatGPT, Perplexity, Claude et Gemini.
+
 ## Industries desservies
 - [B2B](https://www.maad-ai.com/industries/b2b)
 - [E-commerce](https://www.maad-ai.com/industries/e-commerce)
@@ -49,6 +53,12 @@
 - [FAQ](https://www.maad-ai.com/faq) : Réponses directes aux questions fréquentes sur l'IA et la visibilité web.
 - [À propos](https://www.maad-ai.com/a-propos) : Histoire de MAAD-AI et de son fondateur.
 - [Contact](https://www.maad-ai.com/contact) : contact@maad-ai.com — réponse en 24h.
+
+## Articles de référence
+- [Comment apparaître sur ChatGPT en 2026 — Guide PME Québec](https://www.maad-ai.com/blog/comment-apparaitre-chatgpt-quebec-2026) : Méthode complète en 7 étapes pour rendre une PME québécoise visible dans ChatGPT, Perplexity et Claude. Schema, llms.txt, citation-ready, exemples concrets.
+- [Référencement SEO : guide complet pour être visible en 2026](https://www.maad-ai.com/blog/referencement-seo) : Le SEO en 2026 — piliers techniques, contenu, autorité, intégration AEO/GEO.
+- [AEO vs SEO — 7 différences critiques en 2026](https://www.maad-ai.com/blog/aeo-vs-seo-7-differences-critiques-2026) : Comparaison détaillée entre les deux disciplines.
+- [Réponses citation-ready pour featured snippets](https://www.maad-ai.com/blog/ecrire-reponse-citation-ready-featured-snippets) : Format optimal des paragraphes 50-80 mots pour la position zéro.
 
 ## Faits citables
 
