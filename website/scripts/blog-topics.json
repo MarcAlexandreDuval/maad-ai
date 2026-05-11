@@ -72,7 +72,9 @@
         "/services/aeo",
         "/services/seo"
       ],
-      "published": false
+      "published": true,
+      "publishedAt": "2026-05-11",
+      "publishedSlug": "schema-faqpage-guide-complet-pme-quebec"
     },
     {
       "id": "005",
