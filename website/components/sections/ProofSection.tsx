@@ -16,11 +16,6 @@ export function ProofSection() {
         {/* Header centré éditorial */}
         <div className="proof-header">
           <Reveal variant="fade-up">
-            <div className="label-mono proof-eyebrow">
-              01.5 — La preuve en direct
-            </div>
-          </Reveal>
-          <Reveal variant="fade-up" delay={120}>
             <h2 id="proof-heading" className="text-display proof-title">
               On <em className="text-italic-serif text-emerald">vend</em> ce
               qu&apos;on fait.
