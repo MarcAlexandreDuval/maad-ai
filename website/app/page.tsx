@@ -10,6 +10,7 @@ import { ProcessTimeline } from "@/components/ui/ProcessTimeline";
 import { BrandLogos } from "@/components/ui/BrandLogos";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { Counter } from "@/components/ui/Counter";
+import { ProofSection } from "@/components/sections/ProofSection";
 import {
   AgentsTodoAnim,
   AutomationFlowAnim,
@@ -198,7 +199,7 @@ export default function HomePage() {
               </Reveal>
             </div>
 
-            {/* Right column — 2x2 stat grid */}
+            {/* Right column — 2x2 stat grid (revert au layout uniforme) */}
             <div
               className="grid grid-cols-1 sm:grid-cols-2 gap-5"
               role="list"
@@ -252,6 +253,11 @@ export default function HomePage() {
 
       <SectionDivider />
 
+      {/* ============ PROOF SECTION (screenshot ChatGPT citant MAAD-AI) ============ */}
+      <ProofSection />
+
+      <SectionDivider />
+
       {/* ============ SECTION IA ============ */}
       <SectionWrapper id="services">
         <section aria-labelledby="ia-heading">
@@ -294,7 +300,7 @@ export default function HomePage() {
             </Reveal>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6" role="list">
+          <div className="ia-bento" role="list">
             {[
               {
                 href: "/services/agents-ia",
@@ -303,6 +309,8 @@ export default function HomePage() {
                 title: "Agents IA",
                 desc: "Des agents IA autonomes qui analysent, décident et exécutent — comme un employé qui ne dort jamais. Construits avec CrewAI et LLMs.",
                 cta: "En savoir plus sur nos agents IA",
+                size: "hero" as const,
+                priority: true,
               },
               {
                 href: "/services/automatisation",
@@ -311,6 +319,8 @@ export default function HomePage() {
                 title: "Automatisation",
                 desc: "Automatisation IA avec n8n et Make — connecte tes outils, élimine le copier-coller, et récupère tes soirées.",
                 cta: "Découvrir l'automatisation IA",
+                size: "half" as const,
+                priority: false,
               },
               {
                 href: "/services/chatbot-ia",
@@ -319,11 +329,24 @@ export default function HomePage() {
                 title: "Chatbot IA",
                 desc: "Chatbot IA intelligent qui comprend, qualifie et convertit — sur ton site, WhatsApp ou par téléphone.",
                 cta: "Voir nos chatbots IA",
+                size: "half" as const,
+                priority: false,
               },
             ].map((s, i) => (
-              <Reveal key={s.href} variant="fade-up" delay={i * 150}>
-                <article role="listitem" className="h-full">
-                  <Link href={s.href} className="block h-full ia-card">
+              <article
+                key={s.href}
+                role="listitem"
+                className={`ia-bento-item ia-bento-item--${s.size}`}
+              >
+                <Reveal
+                  variant="fade-up"
+                  delay={i * 150}
+                  className="ia-bento-reveal"
+                >
+                  <Link
+                    href={s.href}
+                    className={`block h-full ia-card ${s.priority ? "ia-card--priority" : ""}`}
+                  >
                     {s.anim}
                     <span className="ia-card-number">{s.number}</span>
                     <h3 className="ia-card-title">{s.title}</h3>
@@ -332,8 +355,8 @@ export default function HomePage() {
                       {s.cta} <span aria-hidden>→</span>
                     </span>
                   </Link>
-                </article>
-              </Reveal>
+                </Reveal>
+              </article>
             ))}
           </div>
         </section>
