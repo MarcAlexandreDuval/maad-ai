@@ -90,7 +90,9 @@
         "/services/aeo",
         "/services/geo"
       ],
-      "published": false
+      "published": true,
+      "publishedAt": "2026-05-18",
+      "publishedSlug": "google-ai-overviews-comment-etre-choisi-source"
     },
     {
       "id": "006",
