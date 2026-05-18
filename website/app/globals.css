@@ -2925,6 +2925,57 @@
     line-height: 1.5;
     color: rgba(244, 242, 236, 0.85);
   }
+  /* MOBILE — densify proportions for better readability */
+  @media (max-width: 767px) {
+    .proof-section {
+      padding: 3rem 0;
+    }
+    .proof-header {
+      margin-bottom: 2rem;
+    }
+    .proof-title {
+      font-size: 1.6rem;
+      line-height: 1.15;
+    }
+    /* Compact browser frame */
+    .proof-browser {
+      border-radius: 8px;
+      box-shadow:
+        0 20px 50px -15px rgba(0, 200, 150, 0.18),
+        0 0 0 1px rgba(0, 200, 150, 0.05);
+    }
+    .proof-browser__chrome {
+      padding: 0.5rem 0.7rem;
+      gap: 0.5rem;
+    }
+    .proof-browser__dot {
+      width: 9px;
+      height: 9px;
+    }
+    .proof-browser__dots {
+      gap: 0.3rem;
+    }
+    .proof-browser__url {
+      font-size: 0.65rem;
+    }
+    .proof-browser__chrome-spacer {
+      width: 30px;
+    }
+    /* Caption compact */
+    .proof-caption {
+      margin-top: 1.5rem;
+      padding: 0 0.5rem;
+    }
+    .proof-caption__meta {
+      font-size: 0.58rem;
+      letter-spacing: 0.15em;
+      margin-bottom: 1rem;
+    }
+    .proof-caption__text {
+      font-size: 1rem;
+      line-height: 1.45;
+    }
+  }
 
   /* ============ FOUNDER SECTION ============ */
   .founder-section {
