@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { PageHero } from "@/components/ui/PageHero";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { GlassCard } from "@/components/ui/GlassCard";
@@ -272,17 +273,36 @@ export default function AProposPage() {
       <SectionWrapper>
         <section aria-labelledby="founder-heading">
           <div className="grid lg:grid-cols-[1fr_1.4fr] gap-12 items-start">
-            {/* Photo placeholder */}
+            {/* Photo Marc */}
             <Reveal variant="fade-up">
               <div className="about-founder-visual">
-                <div className="about-founder-visual__frame">
-                  <div className="about-founder-visual__initials">MAD</div>
+                <div className="about-founder-visual__photo">
+                  <div
+                    className="about-founder-visual__glow"
+                    aria-hidden
+                  />
+                  <Image
+                    src="/marc-founder.jpg"
+                    alt={`${SITE.founder}, fondateur de ${SITE.name}`}
+                    width={460}
+                    height={690}
+                    className="about-founder-visual__img"
+                    sizes="(max-width: 1024px) 80vw, 380px"
+                  />
+                  <div
+                    className="about-founder-visual__corner about-founder-visual__corner--tl"
+                    aria-hidden
+                  />
+                  <div
+                    className="about-founder-visual__corner about-founder-visual__corner--br"
+                    aria-hidden
+                  />
                 </div>
-                <div className="label-mono text-center mt-4 text-emerald">
+                <div className="label-mono text-center mt-5 text-emerald">
                   {SITE.founder}
                 </div>
                 <div className="label-mono text-center mt-1 opacity-50">
-                  Fondateur, MAAD-AI
+                  Fondateur, MAAD-AI · Joliette
                 </div>
               </div>
             </Reveal>
