@@ -11,6 +11,7 @@ import { BrandLogos } from "@/components/ui/BrandLogos";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { Counter } from "@/components/ui/Counter";
 import { ProofSection } from "@/components/sections/ProofSection";
+import { AuthorityStatsInteractive } from "@/components/sections/AuthorityStatsInteractive";
 import {
   AgentsTodoAnim,
   AutomationFlowAnim,
@@ -277,65 +278,9 @@ export default function HomePage() {
             </Reveal>
           </div>
 
-          {/* 3 stats cards — equal height via h-full chain */}
-          <div
-            className="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-16"
-            role="list"
-          >
-            {[
-              {
-                value: 94,
-                suffix: "%",
-                label:
-                  "des décideurs B2B utilisent un LLM pendant leur processus d'achat",
-                source: "Forrester · State of Business Buying 2026",
-                accent: false,
-              },
-              {
-                value: 85,
-                suffix: "%",
-                label:
-                  "des acheteurs perçoivent un fournisseur comme plus crédible quand une IA le recommande",
-                source: "G2 · Software Buyer Behavior 2026",
-                accent: true,
-              },
-              {
-                value: 90,
-                suffix: "%",
-                label:
-                  "des achats B2B passeront par des agents IA d'ici 2028 (15T$ de spend)",
-                source: "Gartner · B2B AI Predictions",
-                accent: false,
-              },
-            ].map((s, i) => (
-              <Reveal
-                key={s.label}
-                variant="fade-up"
-                delay={i * 80}
-                className="h-full"
-              >
-                <div
-                  className="stat-card h-full flex flex-col"
-                  role="listitem"
-                >
-                  <Counter
-                    value={s.value}
-                    suffix={s.suffix}
-                    duration={1700}
-                    className={`stat-number ${
-                      s.accent
-                        ? "stat-number--accent"
-                        : "stat-number--default"
-                    }`}
-                  />
-                  <span className="stat-card-label flex-1">{s.label}</span>
-                  <span className="label-mono text-[0.58rem] opacity-45 mt-4 block">
-                    {s.source}
-                  </span>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+          {/* Interactive stat-switcher : 1 stat ÉNORME à la fois + tabs + auto-rotation
+              (radicalement différent du grid 2x2 de "Pourquoi maintenant" au-dessus) */}
+          <AuthorityStatsInteractive />
 
           {/* Punchline finale — CENTERED */}
           <Reveal variant="fade-up" delay={400}>
