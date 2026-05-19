@@ -17,24 +17,110 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const STATS = [
   {
-    value: "94%",
+    value: 94,
     label:
       "des décideurs B2B utilisent un LLM pendant leur processus d'achat",
     source: "Forrester · State of Business Buying 2026",
   },
   {
-    value: "85%",
+    value: 85,
     label:
       "des acheteurs perçoivent un fournisseur comme plus crédible quand une IA le recommande",
     source: "G2 · Software Buyer Behavior 2026",
   },
   {
-    value: "90%",
+    value: 90,
     label:
       "des achats B2B passeront par des agents IA d'ici 2028 — 15T$ de spend",
     source: "Gartner · B2B AI Predictions",
   },
 ];
+
+/**
+ * DonutChart — radial progress chart with animated draw-on.
+ * Animation : strokeDashoffset from full circumference to target.
+ */
+function DonutChart({ value }: { value: number }) {
+  const size = 280; // SVG viewport (responsive via CSS)
+  const strokeWidth = 14;
+  const radius = (size - strokeWidth) / 2;
+  const circumference = 2 * Math.PI * radius;
+  const targetOffset = circumference - (value / 100) * circumference;
+
+  return (
+    <div
+      className="relative"
+      style={{
+        width: "min(72vw, 320px)",
+        aspectRatio: "1 / 1",
+      }}
+    >
+      <svg
+        viewBox={`0 0 ${size} ${size}`}
+        className="w-full h-full -rotate-90"
+        aria-hidden
+      >
+        {/* Background ring */}
+        <circle
+          cx={size / 2}
+          cy={size / 2}
+          r={radius}
+          stroke="rgba(244, 242, 236, 0.08)"
+          strokeWidth={strokeWidth}
+          fill="none"
+        />
+        {/* Progress ring — animated */}
+        <motion.circle
+          cx={size / 2}
+          cy={size / 2}
+          r={radius}
+          stroke="#00c896"
+          strokeWidth={strokeWidth}
+          strokeLinecap="round"
+          fill="none"
+          strokeDasharray={circumference}
+          initial={{ strokeDashoffset: circumference }}
+          animate={{ strokeDashoffset: targetOffset }}
+          transition={{
+            duration: 1.4,
+            ease: [0.23, 1, 0.32, 1],
+            delay: 0.1,
+          }}
+        />
+      </svg>
+
+      {/* Percentage at center — small editorial accent */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <motion.span
+          initial={{ opacity: 0, scale: 0.92 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{
+            duration: 0.6,
+            delay: 0.5,
+            ease: [0.23, 1, 0.32, 1],
+          }}
+          className="text-italic-serif text-emerald"
+          style={{
+            fontSize: "clamp(2.5rem, 7vw, 4.5rem)",
+            lineHeight: 1,
+          }}
+          aria-label={`${value} pour cent`}
+        >
+          {value}
+          <span
+            style={{
+              fontSize: "0.55em",
+              marginLeft: "0.05em",
+              verticalAlign: "0.1em",
+            }}
+          >
+            %
+          </span>
+        </motion.span>
+      </div>
+    </div>
+  );
+}
 
 export function AuthorityStatsInteractive() {
   const [active, setActive] = useState(0);
@@ -64,7 +150,7 @@ export function AuthorityStatsInteractive() {
       onMouseLeave={() => setHovered(false)}
     >
       {/* Big animated stat — un seul à la fois */}
-      <div className="relative min-h-[280px] md:min-h-[360px] flex items-center justify-center text-center px-4">
+      <div className="relative min-h-[460px] md:min-h-[540px] flex items-center justify-center text-center px-4">
         <AnimatePresence mode="wait">
           <motion.div
             key={active}
@@ -75,17 +161,9 @@ export function AuthorityStatsInteractive() {
               duration: 0.5,
               ease: [0.23, 1, 0.32, 1], // cubic-bezier strong ease-out
             }}
-            className="flex flex-col items-center gap-6 max-w-2xl"
+            className="flex flex-col items-center gap-8 max-w-2xl"
           >
-            <span
-              className="text-italic-serif text-emerald leading-none"
-              style={{
-                fontSize: "clamp(6rem, 18vw, 14rem)",
-                lineHeight: 0.9,
-              }}
-            >
-              {stat.value}
-            </span>
+            <DonutChart value={stat.value} />
             <p className="text-muted text-lg md:text-xl leading-relaxed max-w-xl text-balance">
               {stat.label}
             </p>
@@ -108,7 +186,7 @@ export function AuthorityStatsInteractive() {
             onClick={() => handleTabClick(i)}
             role="tab"
             aria-selected={active === i}
-            aria-label={`Statistique ${s.value} — ${s.label}`}
+            aria-label={`Statistique ${s.value}% — ${s.label}`}
             className={`
               px-5 py-2.5 rounded-full label-mono text-[0.7rem] tracking-wider
               transition-all duration-300 ease-out
@@ -124,7 +202,7 @@ export function AuthorityStatsInteractive() {
                 "all 280ms cubic-bezier(0.23, 1, 0.32, 1)",
             }}
           >
-            {s.value}
+            {s.value}%
           </button>
         ))}
       </div>
