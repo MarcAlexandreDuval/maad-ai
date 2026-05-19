@@ -143,3 +143,62 @@ export function definedTermSchema({
     inDefinedTermSet: `${SITE.url}${path}`,
   };
 }
+
+/**
+ * LocalBusiness schema avec GeoCoordinates et areaServed précis pour une ville spécifique.
+ * Critique pour le SEO local + AEO local (Google + ChatGPT/Perplexity citations géolocalisées).
+ */
+export function localBusinessSchema({
+  cityName,
+  description,
+  path,
+  latitude,
+  longitude,
+  areaServed,
+}: {
+  cityName: string;
+  description: string;
+  path: string;
+  latitude: number;
+  longitude: number;
+  areaServed: string[];
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": `${SITE.url}${path}#localbusiness`,
+    name: `${SITE.name} — Agence IA à ${cityName}`,
+    description,
+    url: `${SITE.url}${path}`,
+    image: `${SITE.url}/og-image.png`,
+    logo: `${SITE.url}/logo.png`,
+    email: SITE.email,
+    priceRange: "$$-$$$",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: SITE.city,
+      addressRegion: SITE.province,
+      addressCountry: "CA",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude,
+      longitude,
+    },
+    areaServed: areaServed.map((name) => ({
+      "@type": "City",
+      name,
+    })),
+    sameAs: SOCIALS.map((s) => s.href),
+    knowsAbout: [
+      "Answer Engine Optimization",
+      "Generative Engine Optimization",
+      "SEO local",
+      "Intelligence artificielle",
+      "Automatisation des processus",
+      "ChatGPT visibility",
+      "Google AI Overviews",
+      "Perplexity citations",
+    ],
+  };
+}
