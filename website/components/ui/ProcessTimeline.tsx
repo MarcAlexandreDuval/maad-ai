@@ -108,8 +108,6 @@ const TABS: { id: Mode; label: string; shortLabel: string }[] = [
   { id: "viz", label: "Visibilité Web", shortLabel: "Visibilité" },
 ];
 
-const AUTO_ADVANCE_MS = 6000;
-
 /**
  * ChevronIcon — SVG chevron qui rotate 180° quand expanded.
  * Replace l'ancien text "→" qui était inconsistant avec le "↓" sur expanded.
@@ -138,31 +136,9 @@ function ChevronIcon({ expanded }: { expanded: boolean }) {
   );
 }
 
-/**
- * PlayPauseIcon — toggle pour auto-advance.
- */
-function PlayPauseIcon({ playing }: { playing: boolean }) {
-  if (playing) {
-    return (
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-        <rect x="6" y="5" width="4" height="14" rx="1" />
-        <rect x="14" y="5" width="4" height="14" rx="1" />
-      </svg>
-    );
-  }
-  return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-      <path d="M8 5v14l11-7z" />
-    </svg>
-  );
-}
-
 export function ProcessTimeline() {
   const [mode, setMode] = useState<Mode>("ia");
   const [activeIndex, setActiveIndex] = useState(0);
-  const [autoPlay, setAutoPlay] = useState(false);
-  const [hovered, setHovered] = useState(false);
-  const [progress, setProgress] = useState(0);
   const scrollOnChangeRef = useRef(false);
   const tabRefs = useRef<Record<Mode, HTMLButtonElement | null>>({
     ia: null,
@@ -187,7 +163,6 @@ export function ProcessTimeline() {
     (e: KeyboardEvent<HTMLDivElement>) => {
       if (e.key !== "ArrowDown" && e.key !== "ArrowUp") return;
       e.preventDefault();
-      setAutoPlay(false); // user takes control
       setActiveIndex((prev) => {
         if (e.key === "ArrowDown") return Math.min(prev + 1, 3);
         return Math.max(prev - 1, 0);
@@ -208,105 +183,48 @@ export function ProcessTimeline() {
     }
   }, [activeIndex, mode]);
 
-  // Auto-advance interval (pauses on hover)
-  useEffect(() => {
-    if (!autoPlay || hovered) {
-      setProgress(0);
-      return;
-    }
-
-    const startTime = Date.now();
-    const progressId = setInterval(() => {
-      const elapsed = Date.now() - startTime;
-      setProgress(Math.min((elapsed / AUTO_ADVANCE_MS) * 100, 100));
-    }, 50);
-
-    const advanceId = setTimeout(() => {
-      setActiveIndex((prev) => (prev + 1) % 4);
-      setProgress(0);
-    }, AUTO_ADVANCE_MS);
-
-    return () => {
-      clearInterval(progressId);
-      clearTimeout(advanceId);
-    };
-  }, [autoPlay, hovered, activeIndex, mode]);
-
-  // Reset progress when switching modes or stepping manually
-  useEffect(() => {
-    setProgress(0);
-  }, [activeIndex, mode]);
-
   const handleDotClick = (i: number) => {
     setActiveIndex(i);
-    setAutoPlay(false); // user takes control
     scrollOnChangeRef.current = true;
   };
 
   const handleStepHeadClick = (i: number) => {
     setActiveIndex(i);
-    setAutoPlay(false);
     // Pas de scroll ici — l'user clique déjà sur ce qu'il veut voir
   };
 
   return (
-    <div
-      className="proc-timeline"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
-      {/* Toggle + Auto-play control */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-center gap-4 sm:gap-6">
-        <div
-          role="tablist"
-          aria-label="Choisir le parcours"
-          className={`process-toggle process-toggle--${mode}`}
-        >
-          <span className="process-toggle__thumb" aria-hidden />
-          {TABS.map((t) => (
-            <button
-              key={t.id}
-              ref={(el) => {
-                tabRefs.current[t.id] = el;
-              }}
-              id={`tab-${t.id}`}
-              role="tab"
-              type="button"
-              aria-selected={mode === t.id}
-              aria-controls={`panel-${t.id}`}
-              tabIndex={mode === t.id ? 0 : -1}
-              className={`process-toggle__btn ${mode === t.id ? "is-active" : ""}`}
-              onClick={() => {
-                setMode(t.id);
-                setActiveIndex(0);
-                setAutoPlay(false);
-              }}
-              onKeyDown={onTabKey}
-            >
-              <span className="process-toggle__btn-full">{t.label}</span>
-              <span className="process-toggle__btn-short">{t.shortLabel}</span>
-            </button>
-          ))}
-        </div>
-
-        {/* Auto-advance toggle */}
-        <button
-          type="button"
-          onClick={() => setAutoPlay((p) => !p)}
-          aria-label={autoPlay ? "Pause auto-avance" : "Démarrer auto-avance"}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full label-mono text-[0.7rem] tracking-wider border transition-all"
-          style={{
-            borderColor: autoPlay
-              ? "rgba(0, 200, 150, 0.5)"
-              : "rgba(255, 255, 255, 0.12)",
-            color: autoPlay ? "#00c896" : "rgba(244, 242, 236, 0.6)",
-            background: autoPlay ? "rgba(0, 200, 150, 0.08)" : "transparent",
-            transition: "all 280ms cubic-bezier(0.23, 1, 0.32, 1)",
-          }}
-        >
-          <PlayPauseIcon playing={autoPlay} />
-          <span>{autoPlay ? "Pause" : "Lecture auto"}</span>
-        </button>
+    <div className="proc-timeline">
+      {/* Toggle */}
+      <div
+        role="tablist"
+        aria-label="Choisir le parcours"
+        className={`process-toggle process-toggle--${mode}`}
+      >
+        <span className="process-toggle__thumb" aria-hidden />
+        {TABS.map((t) => (
+          <button
+            key={t.id}
+            ref={(el) => {
+              tabRefs.current[t.id] = el;
+            }}
+            id={`tab-${t.id}`}
+            role="tab"
+            type="button"
+            aria-selected={mode === t.id}
+            aria-controls={`panel-${t.id}`}
+            tabIndex={mode === t.id ? 0 : -1}
+            className={`process-toggle__btn ${mode === t.id ? "is-active" : ""}`}
+            onClick={() => {
+              setMode(t.id);
+              setActiveIndex(0);
+            }}
+            onKeyDown={onTabKey}
+          >
+            <span className="process-toggle__btn-full">{t.label}</span>
+            <span className="process-toggle__btn-short">{t.shortLabel}</span>
+          </button>
+        ))}
       </div>
 
       {/* Horizontal timeline */}
@@ -315,8 +233,9 @@ export function ProcessTimeline() {
         <div
           className="proc-track__progress"
           style={{
-            width: `${(activeIndex / 3) * 100 + (autoPlay && !hovered ? (progress / 100) * (100 / 3) : 0)}%`,
-            transition: autoPlay && !hovered ? "width 50ms linear" : "width 600ms cubic-bezier(0.23, 1, 0.32, 1)",
+            width: `${(activeIndex / 3) * 100}%`,
+            transition:
+              "width 600ms cubic-bezier(0.23, 1, 0.32, 1)",
           }}
         />
         <div className="proc-track__dots">
