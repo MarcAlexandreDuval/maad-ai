@@ -256,11 +256,9 @@ export default function HomePage() {
       {/* ============ POURQUOI ÇA RAPPORTE (autorité IA = revenu) ============ */}
       <SectionWrapper>
         <section aria-labelledby="why-pays-heading">
-          <div className="max-w-3xl mb-14">
+          {/* Title block — CENTERED */}
+          <div className="max-w-3xl mx-auto mb-16 text-center">
             <Reveal variant="fade-up">
-              <div className="label-mono mb-6">01.5 — Pourquoi ça rapporte</div>
-            </Reveal>
-            <Reveal variant="fade-up" delay={120}>
               <h2 id="why-pays-heading" className="text-display">
                 L&apos;autorité IA.{" "}
                 <em className="text-italic-serif text-emerald">
@@ -269,8 +267,8 @@ export default function HomePage() {
                 de marque.
               </h2>
             </Reveal>
-            <Reveal variant="fade-up" delay={220}>
-              <p className="text-muted text-lg leading-relaxed mt-6 max-w-2xl">
+            <Reveal variant="fade-up" delay={120}>
+              <p className="text-muted text-lg leading-relaxed mt-6 mx-auto max-w-2xl text-balance">
                 Sans autorité IA, tu vends sur le prix. Avec, tu vends sur la
                 valeur. Quand ChatGPT te recommande dans une réponse, 85% des
                 acheteurs te perçoivent comme plus crédible — c&apos;est ça qui
@@ -279,8 +277,9 @@ export default function HomePage() {
             </Reveal>
           </div>
 
+          {/* 3 stats cards — equal height via h-full chain */}
           <div
-            className="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-14"
+            className="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-16"
             role="list"
           >
             {[
@@ -309,8 +308,16 @@ export default function HomePage() {
                 accent: false,
               },
             ].map((s, i) => (
-              <Reveal key={s.label} variant="fade-up" delay={i * 150}>
-                <div className="stat-card" role="listitem">
+              <Reveal
+                key={s.label}
+                variant="fade-up"
+                delay={i * 80}
+                className="h-full"
+              >
+                <div
+                  className="stat-card h-full flex flex-col"
+                  role="listitem"
+                >
                   <Counter
                     value={s.value}
                     suffix={s.suffix}
@@ -321,8 +328,8 @@ export default function HomePage() {
                         : "stat-number--default"
                     }`}
                   />
-                  <span className="stat-card-label">{s.label}</span>
-                  <span className="label-mono text-[0.58rem] opacity-45 mt-3 block">
+                  <span className="stat-card-label flex-1">{s.label}</span>
+                  <span className="label-mono text-[0.58rem] opacity-45 mt-4 block">
                     {s.source}
                   </span>
                 </div>
@@ -330,8 +337,9 @@ export default function HomePage() {
             ))}
           </div>
 
-          <Reveal variant="fade-up" delay={500}>
-            <p className="text-display text-2xl md:text-3xl max-w-3xl text-balance">
+          {/* Punchline finale — CENTERED */}
+          <Reveal variant="fade-up" delay={400}>
+            <p className="text-display text-2xl md:text-3xl max-w-3xl mx-auto text-center text-balance">
               La trinité qui transforme{" "}
               <em className="text-italic-serif text-emerald">
                 l&apos;autorité IA
