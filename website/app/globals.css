@@ -4079,11 +4079,12 @@
   }
   .proc-step__chev {
     color: rgba(232, 232, 237, 0.4);
-    font-family: var(--font-mono);
-    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease;
   }
   .proc-step--expanded .proc-step__chev {
-    transform: rotate(90deg);
     color: var(--emerald);
   }
 
