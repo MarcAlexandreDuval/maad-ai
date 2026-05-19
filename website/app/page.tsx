@@ -253,6 +253,97 @@ export default function HomePage() {
 
       <SectionDivider />
 
+      {/* ============ POURQUOI ÇA RAPPORTE (autorité IA = revenu) ============ */}
+      <SectionWrapper>
+        <section aria-labelledby="why-pays-heading">
+          <div className="max-w-3xl mb-14">
+            <Reveal variant="fade-up">
+              <div className="label-mono mb-6">01.5 — Pourquoi ça rapporte</div>
+            </Reveal>
+            <Reveal variant="fade-up" delay={120}>
+              <h2 id="why-pays-heading" className="text-display">
+                L&apos;autorité IA.{" "}
+                <em className="text-italic-serif text-emerald">
+                  Le nouveau référencement
+                </em>{" "}
+                de marque.
+              </h2>
+            </Reveal>
+            <Reveal variant="fade-up" delay={220}>
+              <p className="text-muted text-lg leading-relaxed mt-6 max-w-2xl">
+                Sans autorité IA, tu vends sur le prix. Avec, tu vends sur la
+                valeur. Quand ChatGPT te recommande dans une réponse, 85% des
+                acheteurs te perçoivent comme plus crédible — c&apos;est ça qui
+                transforme la visibilité en revenu.
+              </p>
+            </Reveal>
+          </div>
+
+          <div
+            className="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-14"
+            role="list"
+          >
+            {[
+              {
+                value: 94,
+                suffix: "%",
+                label:
+                  "des décideurs B2B utilisent un LLM pendant leur processus d'achat",
+                source: "Forrester · State of Business Buying 2026",
+                accent: false,
+              },
+              {
+                value: 85,
+                suffix: "%",
+                label:
+                  "des acheteurs perçoivent un fournisseur comme plus crédible quand une IA le recommande",
+                source: "G2 · Software Buyer Behavior 2026",
+                accent: true,
+              },
+              {
+                value: 90,
+                suffix: "%",
+                label:
+                  "des achats B2B passeront par des agents IA d'ici 2028 (15T$ de spend)",
+                source: "Gartner · B2B AI Predictions",
+                accent: false,
+              },
+            ].map((s, i) => (
+              <Reveal key={s.label} variant="fade-up" delay={i * 150}>
+                <div className="stat-card" role="listitem">
+                  <Counter
+                    value={s.value}
+                    suffix={s.suffix}
+                    duration={1700}
+                    className={`stat-number ${
+                      s.accent
+                        ? "stat-number--accent"
+                        : "stat-number--default"
+                    }`}
+                  />
+                  <span className="stat-card-label">{s.label}</span>
+                  <span className="label-mono text-[0.58rem] opacity-45 mt-3 block">
+                    {s.source}
+                  </span>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal variant="fade-up" delay={500}>
+            <p className="text-display text-2xl md:text-3xl max-w-3xl text-balance">
+              La trinité qui transforme{" "}
+              <em className="text-italic-serif text-emerald">
+                l&apos;autorité IA
+              </em>{" "}
+              en revenu prévisible.
+            </p>
+          </Reveal>
+        </section>
+      </SectionWrapper>
+
+      <SectionDivider />
+
       {/* ============ PROOF SECTION (screenshot ChatGPT citant MAAD-AI) ============ */}
       <ProofSection />
 
@@ -562,20 +653,21 @@ export default function HomePage() {
                     PRÊT POUR LA SUITE&nbsp;?
                   </div>
                   <h2 className="text-display cta-final__title">
-                    Prêt à passer à{" "}
+                    Tu peux payer pour des leads froids. Ou bâtir l&apos;
                     <em className="text-italic-serif text-emerald">
-                      l&apos;IA
-                    </em>
-                    ?
+                      autorité
+                    </em>{" "}
+                    qui te les amène toute seule.
                   </h2>
                   <p className="text-muted text-lg cta-final__sub">
                     Écris-nous. On regarde ton contexte, on te dit honnêtement
-                    si on peut aider — et comment.
+                    si on peut faire de toi la référence IA de ton secteur — et
+                    comment.
                   </p>
                 </div>
                 <div className="cta-final__action">
                   <CTAButton href="/contact">
-                    Parle-nous de ton projet
+                    Bâtir mon autorité IA
                   </CTAButton>
                   <span className="cta-final__hint label-mono">
                     Réponse sous 24 h
