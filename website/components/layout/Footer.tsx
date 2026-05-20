@@ -50,7 +50,31 @@ export function Footer() {
             </div>
 
             <div className="flex flex-col items-center lg:items-start gap-3">
-              <div className="text-emerald opacity-80 mb-1">Régions</div>
+              <div className="text-emerald opacity-80 mb-1">Secteurs</div>
+              <Link
+                href="/secteurs"
+                className="hover:text-emerald transition-colors whitespace-nowrap"
+              >
+                Toutes les régions
+              </Link>
+              <Link
+                href="/agence-ia-lanaudiere"
+                className="hover:text-emerald transition-colors whitespace-nowrap"
+              >
+                IA Lanaudière
+              </Link>
+              <Link
+                href="/agence-ia-joliette"
+                className="hover:text-emerald transition-colors whitespace-nowrap"
+              >
+                IA Joliette
+              </Link>
+              <Link
+                href="/agence-ia-terrebonne"
+                className="hover:text-emerald transition-colors whitespace-nowrap"
+              >
+                IA Terrebonne
+              </Link>
               <Link
                 href="/agence-aeo-quebec"
                 className="hover:text-emerald transition-colors whitespace-nowrap"

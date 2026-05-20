@@ -39,6 +39,7 @@
 - [Conception Web](https://www.maad-ai.com/services/conception-web) : Sites Next.js rapides, optimisés pour Google et les IA.
 
 ### Pages régionales (offres dédiées par marché)
+- [Tous les secteurs desservis](https://www.maad-ai.com/secteurs) : Index géographique hub — toutes les régions du Québec couvertes par MAAD-AI avec les villes et liens vers les pages dédiées.
 - [Agence AEO Québec](https://www.maad-ai.com/agence-aeo-quebec) : Page dédiée pour les PME du Québec qui cherchent une agence AEO francophone — méthode, tarification, FAQ, industries servies.
 - [Agence GEO Montréal](https://www.maad-ai.com/agence-geo-montreal) : Page dédiée pour les entreprises du Grand Montréal qui cherchent à être citées par ChatGPT, Perplexity, Claude et Gemini.
 - [Agence IA Lanaudière](https://www.maad-ai.com/agence-ia-lanaudiere) : Couverture régionale complète des six MRC de Lanaudière (Joliette, L'Assomption, D'Autray, Matawinie, Montcalm, Les Moulins). Visibilité ChatGPT + automatisations + chatbots pour PME locales.
